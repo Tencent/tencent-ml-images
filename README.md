@@ -4,7 +4,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 * **ML-Images**: the largest open-source multi-label image database, including ~18 million URLs to images, which are annotated with labels up to 11K categories
 * **Resnet-101 model**: it is pre-trained on ML-Images, and achieves the highest top-1 accuracy 80.73% on ImageNet via transfer learning
 
- |             |          Grouping           ||
+ |            |     <td colspan=2>Grouping          
  ------------ | :-----------: | -----------: |
 Content       |          *Long Cell*        ||
 Content       |   **Cell**    |         Cell |
@@ -21,7 +21,7 @@ And more      | With an escaped '\|'         ||
 | 18,019,881      | 500,000              | 11,166    | 10,505              | 18,018,621         |  9    |  1500 |
 
 
- | One    | Two | Three | Four    | Five  | Six 
+ | One    | Two | Three | Four    | Five  | Six |
 | :-------------: |:--------------------:| :--------:| :-----------------: |:------------------:| :-------------------:| 
 | Span <td colspan=3>triple  <td colspan=2>double 
 
