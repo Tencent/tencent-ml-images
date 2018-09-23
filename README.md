@@ -1,7 +1,7 @@
 # Tencent ML-Images
 
 This repository introduces the open-source project dubbed **Tencent ML-Images**, which publishes 
-* **ML-Images**: the largest open-source multi-label image database, including ~18 million URLs to images, which are annotated with labels up to 11K categories
+* **ML-Images**: the largest open-source multi-label image database, including 18,019,881 million URLs to images, which are annotated with labels up to 11,166 categories
 * **Resnet-101 model**: it is pre-trained on ML-Images, and achieves the highest top-1 accuracy 80.73% on ImageNet via transfer learning
 
 
