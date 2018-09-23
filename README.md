@@ -4,26 +4,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 * **ML-Images**: the largest open-source multi-label image database, including ~18 million URLs to images, which are annotated with labels up to 11K categories
 * **Resnet-101 model**: it is pre-trained on ML-Images, and achieves the highest top-1 accuracy 80.73% on ImageNet via transfer learning
 
- |            |     <td colspan=2>Grouping          
- ------------ | :-----------: | -----------: |
-Content       |          *Long Cell*        ||
-Content       |   **Cell**    |         Cell |
-New section   |     More      |         Data |
-And more      | With an escaped '\|'         || 
 
-
-| Checkpoint | Train and finetune data  <td colspan=2><small> size of validation  image **224 x 224** </small> <td colspan=2><small> size of validation  image **299 x 299** </small> 
- :------------- |:--------------------| :--------:| :-----------------: |:------------------:| :-------------------:| 
- <small> Our ResNet-101 ckpt4 </small> | <small> Pretrain on ML-Images, finetune on ImageNet 299 x 299 </small> | 75.8 | 92.7 | 79.6 | 94.6 | 
- 
- | # Train images  | # Validation images  | # Classes | # Trainable Classes | # Trainable Images | # Avg tags per image | |
-| :-------------: |:--------------------:| :--------:| :-----------------: |:------------------:| :-------------------:|  :---------------------:|
-| 18,019,881      | 500,000              | 11,166    | 10,505              | 18,018,621         |  9    |  1500 |
-
-
- | One    | Two | Three | Four    | Five  | Six |
-| :-------------: |:--------------------:| :--------:| :-----------------: |:------------------:| :-------------------:| 
-| Span <td colspan=3>triple  <td colspan=2>double 
 
 ## News
 
@@ -137,42 +118,22 @@ python finetune.py
 The retults of different ResNet-101 checkpoints on the validation set of ImageNet are summarized in the following table. 
 
 
-| Checkpoint | Train and finetune data | <small> size of validation  image **224 x 224** </small> || <small> size of validation  image **299 x 299** </small> ||
-|           |            | top-1 accuracy | top-5 accuracy   | top-1 accuracy | top-5 accuracy    |
+| Checkpoint | Train and finetune data  | <sub> Top-1 acc<br>on Val 224 </sub> | <sub> Top-5 acc<br>on Val 224 </sub> | <sub> Top-1 acc<br>on Val 299 </sub> | <sub> Top-5 accuracy<br>on Val 299 </sub> |
  :------------- |:--------------------| :--------:| :-----------------: |:------------------:| :-------------------:| 
- [MSRA ResNet-101](https://github.com/KaimingHe/deep-residual-networks)  | train on ImageNet  | 76.4    |  92.9              |   --       |   --  | 
- <small> [Google ResNet-101  ckpt1](https://arxiv.org/abs/1707.02968) </small> | train on ImageNet, 299 x 299 |  --  |  --  | 77.5  | 93.9 |
- <small> Our ResNet-101 ckpt1 </small> | train on ImageNet | 78.2 | 94.0 | 79.0 | 94.5 |
- <small> [Google ResNet-101  ckpt2](https://arxiv.org/abs/1707.02968) </small> | <small> Pretrain on JFT-300M, finetune on ImageNet, 299 x 299 </small> |  --  |  --  | 79.2  | 94.7 |
- <small> Our ResNet-101 ckpt2 </small> | <small> Pretrain on ML-Images, finetune on ImageNet </small> | **78.8** | **94.5** | 79.5 | 94.9 |
- <small> Our ResNet-101 ckpt3 </small> | <small> Pretrain on ML-Images, finetune on ImageNet 224 to 299 </small> | 78.3 | 94.2 | **80.73** | **95.5** | 
- <small> Our ResNet-101 ckpt4 </small> | <small> Pretrain on ML-Images, finetune on ImageNet 299 x 299 </small> | 75.8 | 92.7 | 79.6 | 94.6 | 
+ <sub> Our ResNet-101 ckpt4 </sub> | <sub> Pretrain on ML-Images, finetune on ImageNet 299 x 299 </sub> | 75.8 | 92.7 | 79.6 | 94.6 | 
+  [MSRA ResNet-101](https://github.com/KaimingHe/deep-residual-networks)  | train on ImageNet  | 76.4    |  92.9              |   --       |   --  | 
+ <sub> [Google ResNet-101  ckpt1](https://arxiv.org/abs/1707.02968) </sub> | train on ImageNet, 299 x 299 |  --  |  --  | 77.5  | 93.9 |
+ <sub> Our ResNet-101 ckpt1 </sub> | train on ImageNet | 78.2 | 94.0 | 79.0 | 94.5 |
+ <sub> [Google ResNet-101  ckpt2](https://arxiv.org/abs/1707.02968) </sub> | <sub> Pretrain on JFT-300M, finetune on ImageNet, 299 x 299 </sub> |  --  |  --  | 79.2  | 94.7 |
+ <sub> Our ResNet-101 ckpt2 </sub> | <sub> Pretrain on ML-Images, finetune on ImageNet </sub> | **78.8** | **94.5** | 79.5 | 94.9 |
+ <sub> Our ResNet-101 ckpt3 </sub> | <sub> Pretrain on ML-Images, finetune on ImageNet 224 to 299 </sub> | 78.3 | 94.2 | **80.73** | **95.5** | 
+ <sub> Our ResNet-101 ckpt4 </sub> | <sub> Pretrain on ML-Images, finetune on ImageNet 299 x 299 </sub> | 75.8 | 92.7 | 79.6 | 94.6 | 
 
 Note: if not specified, the image size in training/finetuning is 224 x 224. 
 *finetune on ImageNet from 224 to 299* means that the image size in early epochs of finetuning is 224 x 224, then 299 x 299 in late epochs.
 
 
- Checkpoint | Train and finetune data | <small> <td colspan=2>size of validation  image **224 x 224** </small>  <small> <td colspan=2>size of validation  image **299 x 299** </small>  |
- | -
- [MSRA ResNet-101](https://github.com/KaimingHe/deep-residual-networks)  | train on ImageNet  | 76.4    |  92.9      |   --       |   --  | 
  
-| One    | Two | Three | Four    | Five  | Six 
-| -
-| Span <td colspan=3>triple  <td colspan=2>double
- 
- 
-  model|top-1|top-5
-	:---:|:---:|:---:
-	ResNet-50|22.9%|6.7%
-	ResNet-101|21.8%|6.1%
-	ResNet-152|21.4%|5.7%
- 
- 
- | # Train images  | # Validation images  | # Classes | # Trainable Classes | # Trainable Images | # Avg tags per image |  # Avg images per class |
-| :-------------: |:--------------------:| :--------:| :-----------------: |:------------------:| :-------------------:|  :---------------------:|
-| 18,019,881      | 500,000              | 11,166    | 10,505              | 18,018,621         |  9    |  1500 |
-
-
 
 ### Feature extraction
 [[back to top](#)]
