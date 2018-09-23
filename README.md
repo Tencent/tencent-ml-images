@@ -11,7 +11,7 @@ af ge
 
 zsf g 
 
-
+<!---
 # Contents
 
 * [Dependencies](#dependencies)
@@ -39,7 +39,7 @@ zsf g
 
 * [Copyright](#)
 * [Citations](#)
-
+-->
 
 # Dependencies
   * Linux
@@ -130,6 +130,26 @@ The retults of different ResNet-101 checkpoints on the validation set of ImageNe
 Note: if not specified, the image size in training/finetuning is 224 x 224. 
 *finetune on ImageNet from 224 to 299* means that the image size in early epochs of finetuning is 224 x 224, then 299 x 299 in late epochs.
 
+
+ Checkpoint | Train and finetune data | <small> <td colspan=2>size of validation  image **224 x 224** </small>  <small> <td colspan=2>size of validation  image **299 x 299** </small>  |
+ | -
+ [MSRA ResNet-101](https://github.com/KaimingHe/deep-residual-networks)  | train on ImageNet  | 76.4    |  92.9      |   --       |   --  | 
+ 
+| One    | Two | Three | Four    | Five  | Six 
+| -
+| Span <td colspan=3>triple  <td colspan=2>double
+ 
+ 
+  model|top-1|top-5
+	:---:|:---:|:---:
+	ResNet-50|22.9%|6.7%
+	ResNet-101|21.8%|6.1%
+	ResNet-152|21.4%|5.7%
+ 
+ 
+ | # Train images  | # Validation images  | # Classes | # Trainable Classes | # Trainable Images | # Avg tags per image |  # Avg images per class |
+| :-------------: |:--------------------:| :--------:| :-----------------: |:------------------:| :-------------------:|  :---------------------:|
+| 18,019,881      | 500,000              | 11,166    | 10,505              | 18,018,621         |  9    |  1500 |
 
 
 
