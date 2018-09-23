@@ -118,7 +118,7 @@ python finetune.py
 The retults of different ResNet-101 checkpoints on the validation set of ImageNet are summarized in the following table. 
 
 
-| Checkpoint | Train and finetune data  | <sub> Top-1 acc<br>on Val 224 </sub> | <sub> Top-5 acc<br>on Val 224 </sub> | <sub> Top-1 acc<br>on Val 299 </sub> | <sub> Top-5 accuracy<br>on Val 299 </sub> |
+| Checkpoints | Train and finetune setting  | <sub> Top-1 acc<br>on Val 224 </sub> | <sub> Top-5 acc<br>on Val 224 </sub> | <sub> Top-1 acc<br>on Val 299 </sub> | <sub> Top-5 accuracy<br>on Val 299 </sub> |
  :------------- |:--------------------| :--------:| :-----------------: |:------------------:| :-------------------:| 
  <sub> Our ResNet-101 ckpt4 </sub> | <sub> Pretrain on ML-Images, finetune on ImageNet 299 x 299 </sub> | 75.8 | 92.7 | 79.6 | 94.6 | 
   [MSRA ResNet-101](https://github.com/KaimingHe/deep-residual-networks)  | train on ImageNet  | 76.4    |  92.9              |   --       |   --  | 
@@ -129,8 +129,10 @@ The retults of different ResNet-101 checkpoints on the validation set of ImageNe
  <sub> Our ResNet-101 ckpt3 </sub> | <sub> Pretrain on ML-Images, finetune on ImageNet 224 to 299 </sub> | 78.3 | 94.2 | **80.73** | **95.5** | 
  <sub> Our ResNet-101 ckpt4 </sub> | <sub> Pretrain on ML-Images, finetune on ImageNet 299 x 299 </sub> | 75.8 | 92.7 | 79.6 | 94.6 | 
 
-Note: if not specified, the image size in training/finetuning is 224 x 224. 
-*finetune on ImageNet from 224 to 299* means that the image size in early epochs of finetuning is 224 x 224, then 299 x 299 in late epochs.
+Note: 
+* if not specified, the image size in training/finetuning is 224 x 224. 
+* *finetune on ImageNet from 224 to 299* means that the image size in early epochs of finetuning is 224 x 224, then 299 x 299 in late epochs.
+* *Top-1 acc on Val 224* indicates the top-1 accuracy on 224 x 224 validation images.
 
 
  
