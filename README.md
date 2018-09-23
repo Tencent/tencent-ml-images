@@ -85,8 +85,9 @@ Note: *Trainable class* indicates the class that has over 100 train images.
 <br/>
  
 The number of images per class  and the number of tags per image in training set  are shown in the following figures.                    
+<!---
 <img  src="git_images/fig_num_images_per_tag.png" alt="GitHub" title="num images per tag" width="540" height="300" />  <img  src="git_images/fig_num_tags_all_images.png" alt="GitHub" title="num images per tag" width="540" height="300" />
-
+-->
 
 # Train
 [[back to top](#)]
