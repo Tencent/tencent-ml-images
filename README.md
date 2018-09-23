@@ -4,6 +4,26 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 * **ML-Images**: the largest open-source multi-label image database, including ~18 million URLs to images, which are annotated with labels up to 11K categories
 * **Resnet-101 model**: it is pre-trained on ML-Images, and achieves the highest top-1 accuracy 80.73% on ImageNet via transfer learning
 
+ |             |          Grouping           ||
+ ------------ | :-----------: | -----------: |
+Content       |          *Long Cell*        ||
+Content       |   **Cell**    |         Cell |
+New section   |     More      |         Data |
+And more      | With an escaped '\|'         || 
+
+
+| Checkpoint | Train and finetune data  <td colspan=2><small> size of validation  image **224 x 224** </small> <td colspan=2><small> size of validation  image **299 x 299** </small> 
+ :------------- |:--------------------| :--------:| :-----------------: |:------------------:| :-------------------:| 
+ <small> Our ResNet-101 ckpt4 </small> | <small> Pretrain on ML-Images, finetune on ImageNet 299 x 299 </small> | 75.8 | 92.7 | 79.6 | 94.6 | 
+ 
+ | # Train images  | # Validation images  | # Classes | # Trainable Classes | # Trainable Images | # Avg tags per image | |
+| :-------------: |:--------------------:| :--------:| :-----------------: |:------------------:| :-------------------:|  :---------------------:|
+| 18,019,881      | 500,000              | 11,166    | 10,505              | 18,018,621         |  9    |  1500 |
+
+
+ | One    | Two | Three | Four    | Five  | Six 
+| :-------------: |:--------------------:| :--------:| :-----------------: |:------------------:| :-------------------:| 
+| Span <td colspan=3>triple  <td colspan=2>double 
 
 ## News
 
