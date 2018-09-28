@@ -75,6 +75,9 @@ Finally, the number of remained URLs is 18,019,881, and the number of categories
 ### Annotations
 [[back to top](#)]
 
+（有关Open Images的部分，因为Annotations是适用CC BY-4.0（https://creativecommons.org/licenses/by/4.0/），所以如果有修改的话，是需要注明的。 License文件我会提，但您们rearme最好也要写，可以参考：https://wiki.creativecommons.org/wiki/Best_practices_for_attribution#This_is_a_good_attribution_for_material_you_modified_slightly
+因为License文件我只提说：以下的文件可能已被修改，但readme里面就可能要写更详细点，像上面那个链接里的范例）
+
 ### Statistics
 [[back to top](#)]
 
