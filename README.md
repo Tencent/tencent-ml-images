@@ -118,10 +118,26 @@ dggd
 [[back to top](#)]
 
 ```
-python finetune.py
+./example/finetune.sh
 ```
 
-### Results
+### Checkpoints
+[[back to top](#)]
+
+* ResNet-101 Checkpoint pretrained on ML-Images: [ckpt-resnet101-mlimages](https://www.dropbox.com/s/bynzhtopdrms14m/newres_tml_224.zip?dl=0)
+* ResNet-101 Checkpoint pretrained on ML-Images and finetuned on ImageNet: [ckpt-resnet101-mlimages-imagenet](https://www.dropbox.com/s/r0mjtjajukkfkv2/newres_tml_224_imagenet_224_299.zip?dl=0)
+
+Please download above two checkpoints and move them into the folder "checkpoints", if you want to extract features using them.
+
+### Feature extraction
+[[back to top](#)]
+
+```
+./example/extract_feature.sh
+```
+
+
+# Results
 
 The retults of different ResNet-101 checkpoints on the validation set of ImageNet are summarized in the following table. 
 
@@ -142,21 +158,6 @@ Note:
 * *Top-1 acc on Val 224* indicates the top-1 accuracy on 224 x 224 validation images.
 
 
- 
-
-### Feature extraction
-[[back to top](#)]
-
-```
-python example/extract_features.py
-```
-
-
-# Checkpoints
-[[back to top](#)]
-
-* ResNet-101 Checkpoint pretrained on ML-Images: [ckpt-resnet101-mlimages](https://www.dropbox.com/s/bynzhtopdrms14m/newres_tml_224.zip?dl=0)
-* ResNet-101 Checkpoint finetuned on ImageNet: [ckpt-resnet101-imagenet](https://www.dropbox.com/s/r0mjtjajukkfkv2/newres_tml_224_imagenet_224_299.zip?dl=0)
 
 
 # Copyright 
