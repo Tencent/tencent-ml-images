@@ -54,7 +54,7 @@ zsf g
 ### Download
 [[back to top](#)]
 
-The image URLs and the corresponding annotations can be found in "data/train_urls.txt". 
+The image URLs and the corresponding annotations can be downloaded from [here](# xxxxx)   in "data/train_urls.txt". 
 The format is as follows
 
 ```
