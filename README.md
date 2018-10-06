@@ -1,8 +1,9 @@
 # Tencent ML-Images
 
 This repository introduces the open-source project dubbed **Tencent ML-Images**, which publishes 
-* **ML-Images**: the largest open-source multi-label image database, including 18,019,881 million URLs to images, which are annotated with labels up to 11,166 categories
-* **Resnet-101 model**: it is pre-trained on ML-Images, and achieves the highest top-1 accuracy 80.73% on ImageNet via transfer learning
+<!--- * **ML-Images**: the largest open-source multi-label image database, including 18,019,881 million URLs to images, which are annotated with labels up to 11,166 categories-->
+* **ML-Images**: the largest open-source multi-label image database, including 17,659,752 million URLs to images, which are annotated with labels up to 11,166 categories
+* **Resnet-101 model**: it is pre-trained on ML-Images, and achieves the top-1 accuracy 80.73% on ImageNet via transfer learning
 
 
 
@@ -53,7 +54,16 @@ zsf g
 ### Download
 [[back to top](#)]
 
-The image URLs of are 
+The image URLs and the corresponding annotations can be found in "data/train_urls.txt". 
+The format is as follows
+
+```
+...
+https://c4.staticflickr.com/8/7239/6997334729_e5fb3938b1_o.jpg  3:1  5193:0.9  5851:0.9 9413:1 9416:1
+https://c2.staticflickr.com/4/3035/3033882900_a9a4263c55_o.jpg  1053:0.8  1193:0.8  1379:0.8
+...
+```
+As shown above, one image corresponds to one row. The first term is the image URL. The followed terms seperated by space are the annotations. For example, "5193:0.9" indicates class 5193 and its confidence 0.9. Note that the class index starts from 0, and you can find the class name from the file "data/dictionary_and_semantic_hierarchy.txt".
 
 ### Image source
 [[back to top](#)]
@@ -65,7 +75,7 @@ Specifically,
 
 We then merge URLs from above two parts according to their categories. Specifically, we firstly all categories to their unique WordIDs defined in [WordNet](https://wordnet.princeton.edu/). According to the semantic topological structure of WordIDs, if two categories share the same WordID or are synonymous, then they are merged to a unique category, as well as their URLs. 
 
-Finally, the number of remained URLs is 18,019,881, and the number of categories is 11,166. 
+Finally, the number of remained URLs is 17,659,752, and the number of categories is 11,166. 
 
 
 
@@ -87,7 +97,7 @@ The main statistics of ML-Images are summarized in ML-Images.
                                                       
 | # Train images  | # Validation images  | # Classes | # Trainable Classes | # Trainable Images | # Avg tags per image |  # Avg images per class |
 | :-------------: |:--------------------:| :--------:| :-----------------: |:------------------:| :-------------------:|  :---------------------:|
-| 18,019,881      | 500,000              | 11,166    | 10,505              | 18,018,621         |  9    |  1500 |
+| 17,659,752       | 500,000              | 11,166    | 10,505              | 18,018,621         |  9    |  1500 |
 
 Note: *Trainable class* indicates the class that has over 100 train images.
 
