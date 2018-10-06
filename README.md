@@ -128,10 +128,9 @@ The retults of different ResNet-101 checkpoints on the validation set of ImageNe
 
 | Checkpoints | Train and finetune setting  | <sub> Top-1 acc<br>on Val 224 </sub> | <sub> Top-5 acc<br>on Val 224 </sub> | <sub> Top-1 acc<br>on Val 299 </sub> | <sub> Top-5 accuracy<br>on Val 299 </sub> |
  :------------- |:--------------------| :--------:| :-----------------: |:------------------:| :-------------------:| 
- <sub> Our ResNet-101 ckpt4 </sub> | <sub> Pretrain on ML-Images, finetune on ImageNet 299 x 299 </sub> | 75.8 | 92.7 | 79.6 | 94.6 | 
- <sub> [MSRA ResNet-101](https://github.com/KaimingHe/deep-residual-networks) </sub> | train on ImageNet  | 76.4    |  92.9              |   --       |   --  | 
- <sub> [Google ResNet-101  ckpt1](https://arxiv.org/abs/1707.02968) </sub> | train on ImageNet, 299 x 299 |  --  |  --  | 77.5  | 93.9 |
- <sub> Our ResNet-101 ckpt1 </sub> | train on ImageNet | 77.8 | 93.9 | 79.0 | 94.5 |
+ <sub> [MSRA ResNet-101](https://github.com/KaimingHe/deep-residual-networks) </sub> |  <sub> train on ImageNet </sub> | 76.4    |  92.9              |   --       |   --  | 
+ <sub> [Google ResNet-101  ckpt1](https://arxiv.org/abs/1707.02968) </sub> |  <sub> train on ImageNet, 299 x 299 </sub> |  --  |  --  | 77.5  | 93.9 |
+ <sub> Our ResNet-101 ckpt1 </sub> |  <sub> train on ImageNet </sub> | 77.8 | 93.9 | 79.0 | 94.5 |
  <sub> [Google ResNet-101  ckpt2](https://arxiv.org/abs/1707.02968) </sub> | <sub> Pretrain on JFT-300M, finetune on ImageNet, 299 x 299 </sub> |  --  |  --  | 79.2  | 94.7 |
  <sub> Our ResNet-101 ckpt2 </sub> | <sub> Pretrain on ML-Images, finetune on ImageNet </sub> | **78.8** | **94.5** | 79.5 | 94.9 |
  <sub> Our ResNet-101 ckpt3 </sub> | <sub> Pretrain on ML-Images, finetune on ImageNet 224 to 299 </sub> | 78.3 | 94.2 | **80.73** | **95.5** | 
@@ -156,8 +155,8 @@ python example/extract_features.py
 # Checkpoints
 [[back to top](#)]
 
-* ResNet-101 Checkpoint pretrained on ML-Images: [ckpt-resnet101-mlimages](# url)
-* ResNet-101 Checkpoint finetuned on ImageNet: [ckpt-resnet101-imagenet](# url)
+* ResNet-101 Checkpoint pretrained on ML-Images: [ckpt-resnet101-mlimages](https://www.dropbox.com/s/bynzhtopdrms14m/newres_tml_224.zip?dl=0)
+* ResNet-101 Checkpoint finetuned on ImageNet: [ckpt-resnet101-imagenet](https://www.dropbox.com/s/r0mjtjajukkfkv2/newres_tml_224_imagenet_224_299.zip?dl=0)
 
 
 # Copyright 
