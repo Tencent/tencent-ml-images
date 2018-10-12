@@ -1,17 +1,9 @@
-"""ResNet v2 model
+"""ResNet model
 Related papers:
     [1] Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun
     Deep Residual Learning for Image Recognition. arXiv:1512.03385
     [2] Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun
     Identity Mappings in Deep Residual Networks. arXiv: 1603.05027
-
-Our Modification:
-    (1) Instead of Use MaxPooling after first Conv layer, we put the 
-    downsampling operation into first stage
-    (2) Instead of Use bottleneck block((1*1,2)=>(3*3,1)=>(1*1,1)), we
-    use ((1*1,1)=>(3*3,2)=>(1*1,1))
-    (3) Instead only apply batch_normal operation on Conv branch, we also apply
-    bn on residual branch,
 """
 from __future__ import absolute_import
 from __future__ import division
