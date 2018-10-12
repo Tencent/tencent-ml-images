@@ -1,6 +1,4 @@
 set -x
-echo "Go Work dir"
-cd ../
 
 python2 finetune.py \
       --mode=train \
