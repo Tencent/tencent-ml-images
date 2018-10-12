@@ -120,7 +120,8 @@ The number of images per class  and the number of tags per image in training set
 [[back to top](#)]
 
 ```
-dggd
+cd data
+./download_im_from_url_new.py --url_list=train_urls_tiny.txt --save_dir='./'
 ```
 
 ### Prepare the TFRecord file
