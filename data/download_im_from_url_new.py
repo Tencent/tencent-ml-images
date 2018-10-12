@@ -4,6 +4,9 @@ import urllib
 import argparse
 
 def main(url_list, save_dir):
+    if not os.path.isdir(save_dir):
+        os.mkdir(save_dir)
+
     i=0
     with open(url_list, 'r') as lines:
         for line in lines:
