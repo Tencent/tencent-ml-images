@@ -124,6 +124,10 @@ dggd
 ### Pretrain on ML-Images
 [[back to top](#)]
 
+```
+./example/train.sh
+```
+
 ### Finetune on ImageNet
 [[back to top](#)]
 
