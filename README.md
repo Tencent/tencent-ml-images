@@ -54,7 +54,7 @@ zsf g
 ### Download
 [[back to top](#)]
 
-The image URLs and the corresponding annotations can be downloaded from [here](# xxxxx)   in "data/train_urls.txt". 
+The image URLs and the corresponding annotations can be downloaded from [train_url.txt](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt). Please move the downloaded txt file into `data/`. 
 The format is as follows
 
 ```
