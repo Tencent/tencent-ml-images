@@ -46,7 +46,7 @@ zsf g
 # Dependencies
   * Linux
   * [Python 2.7](https://www.python.org/)
-  * [Tensorflow v1.2.1](https://www.tensorflow.org/install/)
+  * [Tensorflow >= 1.6.0](https://www.tensorflow.org/install/)
 
 # Data
 [[back to top](#)]
