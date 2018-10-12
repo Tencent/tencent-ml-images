@@ -1,6 +1,9 @@
 Tencent is pleased to support the open source community by making Tencent ML-Images available.  
+
 Copyright (C) 2018 THL A29 Limited, a Tencent company.  All rights reserved.
+
 If you have downloaded a copy of the Tencent ML-Images binary from Tencent, please note that the Tencent ML-Images binary is licensed under the BSD 3-Clause License.
+
 If you have downloaded a copy of the Tencent ML-Images source code from Tencent, please note that Tencent ML-Images source code is licensed under the BSD 3-Clause License, except for the third-party components or materials listed below which are subject to different license terms.  Your integration of Tencent ML-Images into your own projects may require compliance with the BSD 3-Clause License, as well as the other licenses applicable to the third-party components or materials included within Tencent ML-Images.
 In addition, please note that the annotations of Tencent ML-Images are licensed under the Creative Commons Attribution 4.0 International Public License (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/.
 The copies of the BSD 3-Clause License and the Creative Commons Attribution 4.0 International Public License are included in this file.
@@ -136,9 +139,7 @@ the Open Source Definition).  Historically, most, but not all, Python
 releases have also been GPL-compatible; the table below summarizes
 the various releases.
 
-    Release            Derived           Year           Owner           GPL-
-                             from                                                        compatible? (1)
-
+    Release            Derived from         Year           Owner           GPL-compatible? (1)                                   
     0.9.0 thru 1.2                          1991-1995   CWI             yes
     1.3 thru 1.5.2   1.2                  1995-1999   CNRI           yes
     1.6                    1.5.2               2000            CNRI           no
