@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 set -x
+echo "Go Work dir"
+cd ../
 
 PYTHON=/path/to/you/python
 RESNET=101

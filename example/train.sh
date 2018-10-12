@@ -1,3 +1,8 @@
+
+set -x 
+echo "Go Work dir"
+cd ../
+
 # Parameters for the training
 PYTHON=/usr/bin/python
 DATASET_DIR=./dataset/tencent-ml-images
