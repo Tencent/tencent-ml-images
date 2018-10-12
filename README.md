@@ -134,8 +134,8 @@ dggd
 ### Checkpoints
 [[back to top](#)]
 
-* ResNet-101 Checkpoint pretrained on ML-Images: [ckpt-resnet101-mlimages](https://www.dropbox.com/s/bynzhtopdrms14m/newres_tml_224.zip?dl=0)
-* ResNet-101 Checkpoint pretrained on ML-Images and finetuned on ImageNet: [ckpt-resnet101-mlimages-imagenet](https://www.dropbox.com/s/r0mjtjajukkfkv2/newres_tml_224_imagenet_224_299.zip?dl=0)
+* ResNet-101 Checkpoint pretrained on ML-Images: [ckpt-resnet101-mlimages](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/ckpt-resnet101-mlimages.zip)
+* ResNet-101 Checkpoint pretrained on ML-Images and finetuned on ImageNet: [ckpt-resnet101-mlimages-imagenet](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/ckpt-resnet101-mlimages-imagenet.zip)
 
 Please download above two checkpoints and move them into the folder "checkpoints", if you want to extract features using them.
 
