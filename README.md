@@ -82,6 +82,11 @@ Finally, the number of remained URLs is 17,659,752, and the number of categories
 ### Semantic hierarchy
 [[back to top](#)]
 
+We build the semantic hiearchy of 11,166 categories, according to [WordNet](https://wordnet.princeton.edu/). 
+The direct parent categories of each class can be found from the file [data/dictionary_and_semantic_hierarchy.txt](data/dictionary_and_semantic_hierarchy.txt). The whole semantic hierarchy includes 4 independent trees, of which 
+the root nodes are `thing`, `matter`, `object, physical object` and `atmospheric phenomenon`, respectively. 
+The length of the longest semantic path from root to leaf nodes is 16, and the average length is 7.47. 
+
 ### Annotations
 [[back to top](#)]
 
@@ -141,7 +146,7 @@ dggd
 * ResNet-101 Checkpoint pretrained on ML-Images: [ckpt-resnet101-mlimages](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/ckpt-resnet101-mlimages.zip)
 * ResNet-101 Checkpoint pretrained on ML-Images and finetuned on ImageNet: [ckpt-resnet101-mlimages-imagenet](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/ckpt-resnet101-mlimages-imagenet.zip)
 
-Please download above two checkpoints and move them into the folder "checkpoints", if you want to extract features using them.
+Please download above two checkpoints and move them into the folder `checkpoints/`, if you want to extract features using them.
 
 ### Feature extraction
 [[back to top](#)]
