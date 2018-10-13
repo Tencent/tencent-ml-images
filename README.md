@@ -35,7 +35,7 @@ af ge
 
 * [Copyright](#copyright)
 
-* [Citations](#citation)
+* [Citation](#citation)
 
 
 # [Dependencies](#dependencies)
