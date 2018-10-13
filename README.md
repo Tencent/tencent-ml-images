@@ -23,7 +23,7 @@ af ge
   * [Annotations](#annotation)
   * [Statistics](#statistics)
   
-* [Train](#)
+* [Train](#train)
   * [Download images using URLs](#download images)
   * [Prepare the TFRecord file](#prepare tfrecord)
   * [Pretrain on ML-Images](#pretrain)
@@ -34,6 +34,7 @@ af ge
 * [Checkpoints](#checkpoint)
 
 * [Copyright](#copyright)
+
 * [Citations](#citation)
 
 
@@ -59,7 +60,7 @@ https://c2.staticflickr.com/4/3035/3033882900_a9a4263c55_o.jpg  1053:0.8  1193:0
 ```
 As shown above, one image corresponds to one row. The first term is the image URL. The followed terms seperated by space are the annotations. For example, "5193:0.9" indicates class 5193 and its confidence 0.9. Note that the class index starts from 0, and you can find the class name from the file [data/dictionary_and_semantic_hierarchy.txt](data/dictionary_and_semantic_hierarchy.txt).
 
-### Image source
+### [Image source](#image source)
 [[back to top](#)]
 
 The image URLs of ML-Images are collected from [ImageNet](http://www.image-net.org/) and [Open Images](https://github.com/openimages/dataset). 
