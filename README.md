@@ -191,7 +191,7 @@ Note:
 The annotations of images are licensed by Tencent under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. 
 The contents of this repository, including the codes, documents and checkpoints, are released under an [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause) license. Please refer to more details in [license.txt](license.txt).
 
-If there is any concern of the copyright of any image used in this project, please [email us](wubaoyuan1987@gmail.com).
+If there is any concern of the copyright of any image used in this project, please [email us](mailto:wubaoyuan1987@gmail.com).
 
 # [Citation](#citation)
 [[back to top](#)]
