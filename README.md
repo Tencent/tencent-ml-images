@@ -134,19 +134,20 @@ After downloading the images, one should generate multiple image list files for 
 ```
 ./tfrecord.sh
 ```
+Note that some URLs in [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
 
 ### Pretrain on ML-Images
 [[back to top](#)]
 
 ```
-./example/train.sh
+./examples/train.sh
 ```
 
 ### Finetune on ImageNet
 [[back to top](#)]
 
 ```
-./example/finetune.sh
+./examples/finetune.sh
 ```
 
 ### Checkpoints
@@ -161,7 +162,7 @@ Please download above two checkpoints and move them into the folder `checkpoints
 [[back to top](#)]
 
 ```
-./example/extract_feature.sh
+./examples/extract_feature.sh
 ```
 
 
