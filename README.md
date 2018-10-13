@@ -11,17 +11,13 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 
 af ge 
 
-zsf g 
 
-<!---
 # Contents
 
 * [Dependencies](#dependencies)
 
 * [Data](#data)
   * [Download](#download)
-    * URLs
-    * Dictionary and Annotations
   * [Source](#)
   * [Semantic hierarchy](#)
   * [Annotations](#)
@@ -41,17 +37,17 @@ zsf g
 
 * [Copyright](#)
 * [Citations](#)
--->
+
 
 # Dependencies
   * Linux
   * [Python 2.7](https://www.python.org/)
   * [Tensorflow >= 1.6.0](https://www.tensorflow.org/install/)
 
-# Data
+# [Data](#data)
 [[back to top](#)]
 
-### Download
+### [Download](#download)
 [[back to top](#)]
 
 The image URLs and the corresponding annotations can be downloaded from [train_url.txt](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt). Please move the downloaded txt file into `data/`. 
