@@ -119,6 +119,9 @@ The number of images per class  and the number of tags per image in training set
 ### Download images using URLs
 [[back to top](#)]
 
+The full [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) is very large. 
+Here we provide a tiny file [train_urls_tiny.txt](data/train_urls_tiny.txt) to show the downloading procedure.
+
 ```
 cd data
 ./download_im_from_url.py --url_list=train_urls_tiny.txt --save_dir='images/'
@@ -126,6 +129,11 @@ cd data
 
 ### Prepare the TFRecord file
 [[back to top](#)]
+
+After downloading the images, one should generate multiple image list files for multithreading. Please refer to the files in `data/image_lists`. Then, run the following code to generate tfrecord files. 
+```
+./tfrecord.sh
+```
 
 ### Pretrain on ML-Images
 [[back to top](#)]
