@@ -17,18 +17,18 @@ af ge
 * [Dependencies](#dependencies)
 
 * [Data](#data)
-  * [Download](#download urls)
+  * [Download](#download-urls)
   * [Image Source](#source)
-  * [Semantic Hierarchy](#semantic hierarchy)
+  * [Semantic Hierarchy](#semantic-hierarchy)
   * [Annotations](#annotation)
   * [Statistics](#statistics)
   
 * [Train](#train)
-  * [Download Images using URLs](#download images)
-  * [Prepare the TFRecord File](#prepare tfrecord)
+  * [Download Images using URLs](#download-images)
+  * [Prepare the TFRecord File](#prepare-tfrecord)
   * [Pretrain on ML-Images](#pretrain)
   * [Finetune on ImageNet](#finetune)
-  * [Feature Extraction](#feature extraction)
+  * [Feature Extraction](#feature-extraction)
  
     
 * [Checkpoints](#checkpoint)
@@ -38,7 +38,7 @@ af ge
 * [Citations](#citation)
 
 
-# Dependencies
+# [Dependencies](#dependencies)
   * Linux
   * [Python 2.7](https://www.python.org/)
   * [Tensorflow >= 1.6.0](https://www.tensorflow.org/install/)
@@ -46,7 +46,7 @@ af ge
 # [Data](#data)
 [[back to top](#)]
 
-### [Download](#download urls)
+### [Download](#download-urls)
 [[back to top](#)]
 
 The image URLs and the corresponding annotations can be downloaded from [train_url.txt](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt). Please move the downloaded txt file into `data/`. 
@@ -60,7 +60,7 @@ https://c2.staticflickr.com/4/3035/3033882900_a9a4263c55_o.jpg  1053:0.8  1193:0
 ```
 As shown above, one image corresponds to one row. The first term is the image URL. The followed terms seperated by space are the annotations. For example, "5193:0.9" indicates class 5193 and its confidence 0.9. Note that the class index starts from 0, and you can find the class name from the file [data/dictionary_and_semantic_hierarchy.txt](data/dictionary_and_semantic_hierarchy.txt).
 
-### [Image source](#image source)
+### [Image source](#image-source)
 [[back to top](#)]
 
 The image URLs of ML-Images are collected from [ImageNet](http://www.image-net.org/) and [Open Images](https://github.com/openimages/dataset). 
@@ -74,7 +74,7 @@ Finally, the number of remained URLs is 17,659,752, and the number of categories
 
 
 
-### [Semantic Hierarchy](#semantic hierarchy)
+### [Semantic Hierarchy](#semantic-hierarchy)
 [[back to top](#)]
 
 We build the semantic hiearchy of 11,166 categories, according to [WordNet](https://wordnet.princeton.edu/). 
@@ -111,7 +111,7 @@ The number of images per class and the histogram of the number of annotations in
 # [Train](#train)
 [[back to top](#)]
 
-### [Download Images using URLs](#download images)
+### [Download Images using URLs](#download-images)
 [[back to top](#)]
 
 The full [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) is very large. 
@@ -122,7 +122,7 @@ cd data
 ./download_im_from_url.py --url_list=train_urls_tiny.txt --save_dir='images/'
 ```
 
-### [Prepare the TFRecord File](#prepare tfrecord)
+### [Prepare the TFRecord File](#prepare-tfrecord)
 [[back to top](#)]
 
 After downloading the images, one should generate multiple image list files for multithreading. Please refer to the files in `data/image_lists`. Then, run the following code to generate tfrecord files. 
@@ -153,7 +153,7 @@ Note that some URLs in [train_url.txt](https://tencent-ml-images-1257811961.cos.
 
 Please download above two checkpoints and move them into the folder `checkpoints/`, if you want to extract features using them.
 
-### [Feature extraction](#feature extraction)
+### [Feature extraction](#feature-extraction)
 [[back to top](#)]
 
 ```
