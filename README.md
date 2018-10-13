@@ -24,19 +24,17 @@ af ge
   * [Statistics](#statistics)
   
 * [Train](#)
-  * [Download images using URLs](#)
-  * [Prepare the TFRecord file](#)
-  * [Pretrain on ML-Images](#)
-  * [Finetune on ImageNet](#)
-  * [Feature extraction](#)
-    * xdg g
+  * [Download images using URLs](#download images)
+  * [Prepare the TFRecord file](#prepare tfrecord)
+  * [Pretrain on ML-Images](#pretrain)
+  * [Finetune on ImageNet](#finetune)
+  * [Feature extraction](#feature extraction)
+ 
     
-* [Checkpoints](#)
-  * ML-Images checkpoint
-  * ImageNet checkpoint
+* [Checkpoints](#checkpoint)
 
-* [Copyright](#)
-* [Citations](#)
+* [Copyright](#copyright)
+* [Citations](#citation)
 
 
 # Dependencies
@@ -75,7 +73,7 @@ Finally, the number of remained URLs is 17,659,752, and the number of categories
 
 
 
-### Semantic hierarchy
+### [Semantic hierarchy](#semantic hierarchy)
 [[back to top](#)]
 
 We build the semantic hiearchy of 11,166 categories, according to [WordNet](https://wordnet.princeton.edu/). 
@@ -83,13 +81,13 @@ The direct parent categories of each class can be found from the file [data/dict
 the root nodes are `thing`, `matter`, `object, physical object` and `atmospheric phenomenon`, respectively. 
 The length of the longest semantic path from root to leaf nodes is 16, and the average length is 7.47. 
 
-### Annotations
+### [Annotations](#annotation)
 [[back to top](#)]
 
 （有关Open Images的部分，因为Annotations是适用CC BY-4.0（https://creativecommons.org/licenses/by/4.0/），所以如果有修改的话，是需要注明的。 License文件我会提，但您们rearme最好也要写，可以参考：https://wiki.creativecommons.org/wiki/Best_practices_for_attribution#This_is_a_good_attribution_for_material_you_modified_slightly
 因为License文件我只提说：以下的文件可能已被修改，但readme里面就可能要写更详细点，像上面那个链接里的范例）
 
-### Statistics
+### [Statistics](#statistics)
 [[back to top](#)]
 
 The main statistics of ML-Images are summarized in ML-Images.
