@@ -18,10 +18,10 @@ af ge
 
 * [Data](#data)
   * [Download](#download)
-  * [Source](#)
-  * [Semantic hierarchy](#)
-  * [Annotations](#)
-  * [Statistics](#)
+  * [Image Source](#source)
+  * [Semantic hierarchy](#semantic hierarchy)
+  * [Annotations](#annotation)
+  * [Statistics](#statistics)
   
 * [Train](#)
   * [Download images using URLs](#)
@@ -109,10 +109,10 @@ The number of images per class and the histogram of the number of annotations in
 <img  src="git_images/num_images_per_class.png" alt="GitHub" title="num images per class" width="430" height="240" />        <img  src="git_images/hist_num_annotations.png" alt="GitHub" title="histogram of num annotations" width="400" height="240" />
 
 
-# Train
+# [Train](#train)
 [[back to top](#)]
 
-### Download images using URLs
+### [Download images using URLs](#download images)
 [[back to top](#)]
 
 The full [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) is very large. 
@@ -123,7 +123,7 @@ cd data
 ./download_im_from_url.py --url_list=train_urls_tiny.txt --save_dir='images/'
 ```
 
-### Prepare the TFRecord file
+### [Prepare the TFRecord file](#prepare tfrecord)
 [[back to top](#)]
 
 After downloading the images, one should generate multiple image list files for multithreading. Please refer to the files in `data/image_lists`. Then, run the following code to generate tfrecord files. 
@@ -132,21 +132,21 @@ After downloading the images, one should generate multiple image list files for 
 ```
 Note that some URLs in [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
 
-### Pretrain on ML-Images
+### [Pretrain on ML-Images](#pretrain)
 [[back to top](#)]
 
 ```
 ./examples/train.sh
 ```
 
-### Finetune on ImageNet
+### [Finetune on ImageNet](#finetune)
 [[back to top](#)]
 
 ```
 ./examples/finetune.sh
 ```
 
-### Checkpoints
+### [Checkpoints](#checkpoint)
 [[back to top](#)]
 
 * ResNet-101 Checkpoint pretrained on ML-Images: [ckpt-resnet101-mlimages](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/ckpt-resnet101-mlimages.zip)
@@ -154,7 +154,7 @@ Note that some URLs in [train_url.txt](https://tencent-ml-images-1257811961.cos.
 
 Please download above two checkpoints and move them into the folder `checkpoints/`, if you want to extract features using them.
 
-### Feature extraction
+### [Feature extraction](#feature extraction)
 [[back to top](#)]
 
 ```
@@ -162,7 +162,7 @@ Please download above two checkpoints and move them into the folder `checkpoints
 ```
 
 
-# Results
+# [Results](#result)
 
 The retults of different ResNet-101 checkpoints on the validation set of ImageNet are summarized in the following table. 
 
@@ -185,13 +185,16 @@ Note:
 
 
 
-# Copyright 
+# [Copyright](#copyright)
 [[back to top](#)]
 
 The annotations of images are licensed by Tencent under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. 
-The contents of this repository, including the codes, documents and checkpoints, are released under an [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause) license.
+The contents of this repository, including the codes, documents and checkpoints, are released under an [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause) license. Please refer to more details in [license.txt](license.txt).
 
+If there is any concern of the copyright of any image used in this project, please [email us](wubaoyuan1987@gmail.com).
 
-# Citation
+# [Citation](#citation)
 [[back to top](#)]
+
+The arxiv paper describling the details of this project will be available soon!
 
