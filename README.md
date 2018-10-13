@@ -17,18 +17,18 @@ af ge
 * [Dependencies](#dependencies)
 
 * [Data](#data)
-  * [Download](#download)
+  * [Download](#download urls)
   * [Image Source](#source)
-  * [Semantic hierarchy](#semantic hierarchy)
+  * [Semantic Hierarchy](#semantic hierarchy)
   * [Annotations](#annotation)
   * [Statistics](#statistics)
   
 * [Train](#train)
-  * [Download images using URLs](#download images)
-  * [Prepare the TFRecord file](#prepare tfrecord)
+  * [Download Images using URLs](#download images)
+  * [Prepare the TFRecord File](#prepare tfrecord)
   * [Pretrain on ML-Images](#pretrain)
   * [Finetune on ImageNet](#finetune)
-  * [Feature extraction](#feature extraction)
+  * [Feature Extraction](#feature extraction)
  
     
 * [Checkpoints](#checkpoint)
@@ -46,7 +46,7 @@ af ge
 # [Data](#data)
 [[back to top](#)]
 
-### [Download](#download)
+### [Download](#download urls)
 [[back to top](#)]
 
 The image URLs and the corresponding annotations can be downloaded from [train_url.txt](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt). Please move the downloaded txt file into `data/`. 
@@ -74,7 +74,7 @@ Finally, the number of remained URLs is 17,659,752, and the number of categories
 
 
 
-### [Semantic hierarchy](#semantic hierarchy)
+### [Semantic Hierarchy](#semantic hierarchy)
 [[back to top](#)]
 
 We build the semantic hiearchy of 11,166 categories, according to [WordNet](https://wordnet.princeton.edu/). 
@@ -111,7 +111,7 @@ The number of images per class and the histogram of the number of annotations in
 # [Train](#train)
 [[back to top](#)]
 
-### [Download images using URLs](#download images)
+### [Download Images using URLs](#download images)
 [[back to top](#)]
 
 The full [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) is very large. 
@@ -122,7 +122,7 @@ cd data
 ./download_im_from_url.py --url_list=train_urls_tiny.txt --save_dir='images/'
 ```
 
-### [Prepare the TFRecord file](#prepare tfrecord)
+### [Prepare the TFRecord File](#prepare tfrecord)
 [[back to top](#)]
 
 After downloading the images, one should generate multiple image list files for multithreading. Please refer to the files in `data/image_lists`. Then, run the following code to generate tfrecord files. 
