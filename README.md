@@ -115,17 +115,18 @@ The number of images per class and the histogram of the number of annotations in
 [[back to top](#)]
 
 The full [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) is very large. 
-Here we provide a tiny file [train_urls_tiny.txt](data/train_urls_tiny.txt) to show the downloading procedure.
+Here we provide a tiny file [train_urls_tiny.txt](data/train_urls_tiny.txt) to demonstrate the downloading procedure.
 
 ```
 cd data
-./download_im_from_url.py --url_list=train_urls_tiny.txt --save_dir='images/'
+./download_im_from_url.py --url_list=train_urls_tiny.txt --im_list=train_im_tiny.txt --save_dir='images/'
 ```
+A sub-folder `data/images` will be generated to save the downloaded jpeg images, as well as a file `train_im_tiny.txt` to save the image list and the corresponding annotations. 
 
 ### [Prepare the TFRecord File](#prepare-tfrecord)
 [[back to top](#)]
 
-After downloading the images, one should generate multiple image list files for multithreading. Please refer to the files in `data/image_lists`. Then, run the following code to generate tfrecord files. 
+Here we generate the tfrecords using the multithreading module. One should firstly split the file `train_im_tiny.txt` into multiple smaller files, and save them into the sub-folder `data/image_lists/`. 
 ```
 ./tfrecord.sh
 ```
