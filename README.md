@@ -128,6 +128,7 @@ A sub-folder `data/images` will be generated to save the downloaded jpeg images,
 
 Here we generate the tfrecords using the multithreading module. One should firstly split the file `train_im_tiny.txt` into multiple smaller files, and save them into the sub-folder `data/image_lists/`. 
 ```
+cd data
 ./tfrecord.sh
 ```
 Note that some URLs in [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
@@ -136,14 +137,14 @@ Note that some URLs in [train_url.txt](https://tencent-ml-images-1257811961.cos.
 [[back to top](#)]
 
 ```
-./examples/train.sh
+./example/train.sh
 ```
 
 ### [Finetune on ImageNet](#finetune)
 [[back to top](#)]
 
 ```
-./examples/finetune.sh
+./example/finetune.sh
 ```
 
 ### [Checkpoints](#checkpoint)
@@ -158,7 +159,7 @@ Please download above two checkpoints and move them into the folder `checkpoints
 [[back to top](#)]
 
 ```
-./examples/extract_feature.sh
+./example/extract_feature.sh
 ```
 
 
