@@ -1,0 +1,4 @@
+im_0.jpeg	https://c5.staticflickr.com/1/45/145381177_9fb32f9de7_o.jpg	5177:0.9	5170:0.9
+im_1.jpeg	https://farm5.staticflickr.com/4041/4473324750_746bbf360e_o.jpg 1193:0.8        1053:0.8
+im_2.jpeg	https://c4.staticflickr.com/8/7239/6997334729_e5fb3938b1_o.jpg  5851:0.9        5193:0.9      9416:1   9413:1  3:1
+im_3.jpeg	https://c2.staticflickr.com/4/3035/3033882900_a9a4263c55_o.jpg  1193:0.8        1053:0.8      1379:0.8
