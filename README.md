@@ -28,11 +28,10 @@ af ge
   * [Prepare the TFRecord File](#prepare-tfrecord)
   * [Pretrain on ML-Images](#pretrain)
   * [Finetune on ImageNet](#finetune)
+  * [Checkpoints](#checkpoint)
   * [Feature Extraction](#feature-extraction)
  
 * [Results](#result)
-
-* [Checkpoints](#checkpoint)
 
 * [Copyright](#copyright)
 
