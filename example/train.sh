@@ -3,7 +3,7 @@ set -x
 
 # Parameters for the training
 PYTHON=/usr/bin/python
-DATASET_DIR=./dataset/tencent-ml-images
+DATASET_DIR=./data/ml-images
 WITH_BBOX=FALSE
 IMG_SIZE=224
 CLASSNUM=11166
