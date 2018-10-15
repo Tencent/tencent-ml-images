@@ -17,9 +17,9 @@ af ge
 * [Dependencies](#dependencies)
 
 * [Data](#data)
-  * [Download](#download-urls)
+  * [Download](#downloadURL)
   * [Image Source](#source)
-  * [Semantic Hierarchy](#semantic-hierarchy)
+  * [Semantic Hierarchy](#hierarchy)
   * [Annotations](#annotation)
   * [Statistics](#statistics)
   
@@ -46,7 +46,7 @@ af ge
 # [Data](#data)
 [[back to top](#)]
 
-### [Download](#download-urls)
+### [Download](#downloadURL)
 [[back to top](#)]
 
 The image URLs and the corresponding annotations can be downloaded from [train_url.txt](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt). Please move the downloaded txt file into `data/`. 
@@ -60,7 +60,7 @@ https://c2.staticflickr.com/4/3035/3033882900_a9a4263c55_o.jpg  1053:0.8  1193:0
 ```
 As shown above, one image corresponds to one row. The first term is the image URL. The followed terms seperated by space are the annotations. For example, "5193:0.9" indicates class 5193 and its confidence 0.9. Note that the class index starts from 0, and you can find the class name from the file [data/dictionary_and_semantic_hierarchy.txt](data/dictionary_and_semantic_hierarchy.txt).
 
-### [Image source](#image-source)
+### [Image source](#source)
 [[back to top](#)]
 
 The image URLs of ML-Images are collected from [ImageNet](http://www.image-net.org/) and [Open Images](https://github.com/openimages/dataset). 
@@ -74,7 +74,7 @@ Finally, the number of remained URLs is 17,659,752, and the number of categories
 
 
 
-### [Semantic Hierarchy](#semantic-hierarchy)
+### [Semantic Hierarchy](#hierarchy)
 [[back to top](#)]
 
 We build the semantic hiearchy of 11,166 categories, according to [WordNet](https://wordnet.princeton.edu/). 
