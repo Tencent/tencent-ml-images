@@ -63,15 +63,29 @@ As shown above, one image corresponds to one row. The first term is the image UR
 ### [Image source](#source)
 [[back to top](#)]
 
+
+The image URLs of ML-Images are collected from [ImageNet](http://www.image-net.org/) and [Open Images](https://github.com/openimages/dataset). 
+Specifically,  
+* Part 1: From the whole database of ImageNet, we adopt 11,117,070 image URLs and 10,032 categories.
+* Part 2: From Open Images, we adopt 6,902,811 training and 159,424 validation image URLs, covering 1,134 unique categories (note that some other categories are merged with their synonymous categories from ImageNet). 
+
+Finally, the number of training URLs in ML-Images is 17,659,752, and the number of categories is 11,166. 
+
+<!---
 The image URLs of ML-Images are collected from [ImageNet](http://www.image-net.org/) and [Open Images](https://github.com/openimages/dataset). 
 Specifically, 
-* Part 1: we adopt the set [ImageNet-11k](http://data.mxnet.io/models/imagenet-11k/). It is a subset of ImageNet, collected by [MXNet](http://mxnet.incubator.apache.org/). It includes 1,474,703 images and 11,221 categories.
-* Part 2: We filter the URLs of Open Images via a per-class criteria. Firstly, if one class occurs in less than 650 URLs, then it is removed. Then, if all annotated tags of one URL are removed, then this URL is abandoned. Consequently,  8,385,050 training URLs and 159,424 validation URLs are remained, covering 2,039 categories.
-
+* Part 1: we adopt the set [ImageNet-11k](http://data.mxnet.io/models/imagenet-11k/). It is a subset of ImageNet, collected by [MXNet](http://mxnet.incubator.apache.org/). It includes 1,474,703 images and 11,221 categories. However, we find there are many abstract categories in visual domain, such as "event", "summer", etc. We think that the training images annotated with such abstract categories 
+will not help (even harm) the visual representation learning. Thus, we abandon these categories. 
+* Part 2: We filter the URLs of Open Images via a per-class criteria. Firstly, if one class occurs in less than 650 URLs, then it is removed. Besides, we also 1) remove some abstract categories as did above, and 2) merge some redundant categories with those in ImageNet. Then, if all annotated tags of one URL are removed, then this URL is abandoned. Consequently,  6,902,811 training URLs and 159,424 validation URLs are remained, covering 1,134 unique categories.
+--->
+<!---
 We then merge URLs from above two parts according to their categories. Specifically, we firstly all categories to their unique WordIDs defined in [WordNet](https://wordnet.princeton.edu/). According to the semantic topological structure of WordIDs, if two categories share the same WordID or are synonymous, then they are merged to a unique category, as well as their URLs. 
-
 Finally, the number of remained URLs is 17,659,752, and the number of categories is 11,166. 
+--->
 
+<!---
+Consequently,  8,385,050 training URLs and 159,424 validation URLs are remained, covering 2,039 categories.
+--->
 
 
 ### [Semantic Hierarchy](#hierarchy)
