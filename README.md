@@ -174,8 +174,8 @@ Then, you can finetune the ResNet-101 model on ImageNet as follows, with the che
 ### [Checkpoints](#checkpoint)
 [[back to top](#)]
 
-* ResNet-101 Checkpoint pretrained on ML-Images: [ckpt-resnet101-mlimages](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/ckpt-resnet101-mlimages.zip)
-* ResNet-101 Checkpoint pretrained on ML-Images and finetuned on ImageNet: [ckpt-resnet101-mlimages-imagenet](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/ckpt-resnet101-mlimages-imagenet.zip)
+* [ckpt-resnet101-mlimages](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/ckpt-resnet101-mlimages.zip): ResNet-101 checkpoint pretrained on ML-Images
+* [ckpt-resnet101-mlimages-imagenet](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/ckpt-resnet101-mlimages-imagenet.zip): ResNet-101 checkpoint pretrained on ML-Images and finetuned on ImageNet
 
 Please download above two checkpoints and move them into the folder `checkpoints/`, if you want to extract features using them.
 
