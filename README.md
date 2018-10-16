@@ -160,10 +160,13 @@ Note that some URLs in [train_url.txt](https://tencent-ml-images-1257811961.cos.
 ```
 ./example/train.sh
 ```
+Note that here we only provide the training code in the single node single GPU framework, while our actual training on ML-Images is based on an internal distributed training framework (not released yet). One could modify the training code to the distributed framework following [distributed tensorFlow](https://www.tensorflow.org/deploy/distributed). 
 
 ### [Finetune on ImageNet](#finetune)
 [[back to top](#)]
 
+One should firstly download the ImageNet database, then prepare the tfrecord file using [tfrecord.sh](example/tfrecord.sh). 
+Then, you can finetune the ResNet-101 model on ImageNet as follows, with the checkpoint pre-trained on ML-Images.
 ```
 ./example/finetune.sh
 ```
