@@ -17,7 +17,7 @@ af ge
 * [Dependencies](#dependencies)
 
 * [Data](#data)
-  * [Download](#download-url)
+  * [Download](#download)
   * [Image Source](#source)
   * [Semantic Hierarchy](#hierarchy)
   * [Annotations](#annotation)
@@ -46,7 +46,7 @@ af ge
 # [Data](#data)
 [[back to top](#)]
 
-### [Download](#download-url)
+### [Download](#download)
 [[back to top](#)]
 
 The image URLs and the corresponding annotations can be downloaded from [train_url.txt](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt). Please move the downloaded txt file into `data/`. 
