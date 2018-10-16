@@ -1,15 +1,16 @@
-"""Small library that points to a data set.
-Methods of Data class:
-	data_files: Returns a python list of all (sharded) data set files.
-	reader: Return a reader for a single entry from the data set.
-"""
-
 """
 Tencent is pleased to support the open source community by making Tencent ML-Images available.
 Copyright (C) 2018 THL A29 Limited, a Tencent company. All rights reserved.
 Licensed under the BSD 3-Clause License (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 https://opensource.org/licenses/BSD-3-Clause
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+"""
+
+
+"""Small library that points to a data set.
+Methods of Data class:
+        data_files: Returns a python list of all (sharded) data set files.
+        reader: Return a reader for a single entry from the data set.
 """
 
 import os

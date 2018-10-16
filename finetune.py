@@ -1,4 +1,3 @@
-#!/usr/bin/python
 """
 Tencent is pleased to support the open source community by making Tencent ML-Images available.
 Copyright (C) 2018 THL A29 Limited, a Tencent company. All rights reserved.
@@ -7,6 +6,8 @@ https://opensource.org/licenses/BSD-3-Clause
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 """
 
+
+#!/usr/bin/python
 import sys
 import os
 import time
@@ -15,7 +16,7 @@ import tensorflow as tf
 
 from models import resnet as resnet
 from data_processing import dataset as file_db
-from data_processing import inception_preprocessing as image_processing
+from data_processing import image_preprocessing as image_preprocess
 from flags import FLAGS
 
 #os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3"
@@ -42,7 +43,7 @@ def assign_weights_from_cp(cpk_path, sess, scope):
                 print "can not restore from ckpt key:%s" % key
 
 def record_parser_fn(value, is_training):
-    """Parse an ImageNet record from `value`."""
+    """Parse an image record from `value`."""
     keys_to_features = {
           'width': tf.FixedLenFeature([], dtype=tf.int64, default_value=0),
           'height': tf.FixedLenFeature([], dtype=tf.int64, default_value=0),
@@ -53,20 +54,13 @@ def record_parser_fn(value, is_training):
 
     parsed = tf.parse_single_example(value, keys_to_features)
 
-    image = tf.image.decode_image(
-      tf.reshape(parsed['image'], shape=[]),
+    image = tf.image.decode_image(tf.reshape(parsed['image'], shape=[]),
       FLAGS.image_channels)
     image = tf.image.convert_image_dtype(image, dtype=tf.float32)
-    xmin = [[]]
-    ymin = [[]]
-    xmax = [[]]
-    ymax = [[]]
-    # Note that we impose an ordering of (y, x) just to make life difficult. 
-    bbox = tf.concat(axis=0, values=[ymin, xmin, ymax, xmax])
-    # Force the variable number of bounding boxes into the shape [1, num_boxes, coords].
-    bbox = tf.expand_dims(bbox, 0)
-    bbox = tf.transpose(bbox, [0, 2, 1])
-    image = image_processing.preprocess_image(
+    
+    bbox = tf.concat(axis=0, values=[ [[]], [[]], [[]], [[]] ])
+    bbox = tf.transpose(tf.expand_dims(bbox, 0), [0, 2, 1])
+    image = image_preprocess.preprocess_image(
         image=image,
         output_height=FLAGS.image_size,
         output_width=FLAGS.image_size,
@@ -99,31 +93,16 @@ def tower_model(images, labels):
     return model, loss
 
 def average_gradients(tower_grads):
-    """Calculate the average gradient for each shared variable across all towers.
-    Note that this function provides a synchronization point across all towers.
-    Args:
-        tower_grads: List of lists of (gradient, variable) tuples. The outer list
-        is over individual gradients. The inner list is over the gradient calculation for each tower.
-    Returns:
-        List of pairs of (gradient, variable) where the gradient has been averaged across all towers.
-    """
+    """ Calculate the average gradient of shared variables across all towers. """
     average_grads = []
     for grad_and_vars in zip(*tower_grads):
-        # Note that each grad_and_vars looks like the following:
-        # ((grad0_gpu0, var0_gpu0), ... , (grad0_gpuN, var0_gpuN))
         grads = []
-        for g, var in grad_and_vars:
-            # Add 0 dimension to the gradients to represent the tower.
-            expanded_g = tf.expand_dims(g, 0)
-            # Append on a 'tower' dimension which we will average over below.
-            grads.append(expanded_g)
+        for grad, var in grad_and_vars:
+            grads.append(tf.expand_dims(grad, 0))
         # Average over the 'tower' dimension.
-        grad = tf.concat(axis=0, values=grads)
-        grad = tf.reduce_mean(grad, 0)
-        # Keep in mind that Variables are redundant because they are shared
-        # across towers. So .. we will just return the first tower's pointer to the Variable.
+        gradient = tf.reduce_mean(tf.concat(axis=0, values=grads), 0)
         v = grad_and_vars[0][1]
-        grad_and_var = (grad, v)
+        grad_and_var = (gradient, v)
         average_grads.append(grad_and_var)
     return average_grads
 

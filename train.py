@@ -1,4 +1,3 @@
-"""Runs a ResNet model on the ImageNet dataset."""
 """
 Tencent is pleased to support the open source community by making Tencent ML-Images available.
 Copyright (C) 2018 THL A29 Limited, a Tencent company. All rights reserved.
@@ -7,6 +6,8 @@ https://opensource.org/licenses/BSD-3-Clause
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 """
 
+
+"""Runs a ResNet model on the ImageNet dataset."""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -18,12 +19,12 @@ import numpy as np
 import tensorflow as tf
 
 from data_processing import dataset as file_db
-from data_processing import inception_preprocessing as img_preprocess
+from data_processing import image_preprocessing as image_preprocess
 from models import resnet as resnet
 from flags import FLAGS
 
-def record_parser_without_bbox(value, is_training):
-  """Parse an ImageNet record from `value`."""
+def record_parser_fn(value, is_training):
+  """Parse an image record from `value`."""
   keys_to_features = {
           'width': tf.FixedLenFeature([], dtype=tf.int64, default_value=0),
           'height': tf.FixedLenFeature([], dtype=tf.int64, default_value=0),
@@ -34,20 +35,13 @@ def record_parser_without_bbox(value, is_training):
 
   parsed = tf.parse_single_example(value, keys_to_features)
 
-  image = tf.image.decode_image(
-      tf.reshape(parsed['image'], shape=[]),
+  image = tf.image.decode_image(tf.reshape(parsed['image'], shape=[]),
       FLAGS.image_channels)
   image = tf.image.convert_image_dtype(image, dtype=tf.float32)
-  xmin = [[]]
-  ymin = [[]]
-  xmax = [[]]
-  ymax = [[]]
-  # Note that we impose an ordering of (y, x) just to make life difficult. 
-  bbox = tf.concat(axis=0, values=[ymin, xmin, ymax, xmax])
-  # Force the variable number of bounding boxes into the shape [1, num_boxes, coords].
-  bbox = tf.expand_dims(bbox, 0)
-  bbox = tf.transpose(bbox, [0, 2, 1])
-  image = img_preprocess.preprocess_image(
+  
+  bbox = tf.concat(axis=0, values=[ [[]], [[]], [[]], [[]] ])
+  bbox = tf.transpose(tf.expand_dims(bbox, 0), [0, 2, 1])
+  image = image_preprocess.preprocess_image(
       image=image,
       output_height=FLAGS.image_size,
       output_width=FLAGS.image_size,
@@ -59,51 +53,6 @@ def record_parser_without_bbox(value, is_training):
   label = tf.reshape(tf.decode_raw(parsed['label'], tf.float32), shape=[FLAGS.class_num,])
 
   return image, label
-
-def record_parser_with_bbox(value, is_training):
-  """Parse an ImageNet record from `value`."""
-  keys_to_features = {
-    'image/width': tf.FixedLenFeature([], dtype=tf.int64, default_value=0),
-    'image/height': tf.FixedLenFeature([], dtype=tf.int64,  default_value=0),
-    'image/encoded': tf.FixedLenFeature([], dtype=tf.string, default_value=''),
-    'image/class/label': tf.FixedLenFeature([1], dtype=tf.int64, default_value=-1),
-    'image/filename': tf.FixedLenFeature([], dtype=tf.string, default_value=''),
-  }
-  sparse_float32 = tf.VarLenFeature(dtype=tf.float32)
-  keys_to_features.update(
-      {k: sparse_float32 for k in ['image/object/bbox/xmin',
-                                   'image/object/bbox/ymin',
-                                   'image/object/bbox/xmax',
-                                   'image/object/bbox/ymax']})
-  parsed = tf.parse_single_example(value, keys_to_features)
-
-  image = tf.image.decode_image(
-      tf.reshape(parsed['image/encoded'], shape=[]),
-      FLAGS.image_channels)
-  image = tf.image.convert_image_dtype(image, dtype=tf.float32)
-
-  xmin = tf.expand_dims(parsed['image/object/bbox/xmin'].values, 0)
-  ymin = tf.expand_dims(parsed['image/object/bbox/ymin'].values, 0)
-  xmax = tf.expand_dims(parsed['image/object/bbox/xmax'].values, 0)
-  ymax = tf.expand_dims(parsed['image/object/bbox/ymax'].values, 0)
-  # Note that we impose an ordering of (y, x) just to make life difficult.
-  bbox = tf.concat(axis=0, values=[ymin, xmin, ymax, xmax])
-  # Force the variable number of bounding boxes into the shape [1, num_boxes, coords].
-  bbox = tf.expand_dims(bbox, 0)
-  bbox = tf.transpose(bbox, [0, 2, 1])
-
-  image = img_preprocess.preprocess_image(
-      image=image,
-      output_height=FLAGS.image_size,
-      output_width=FLAGS.image_size,
-      object_cover=0.05,
-      area_cover=0.05,
-      is_training=is_training,
-      bbox=bbox)
-
-  label = tf.cast(tf.reshape(parsed['image/class/label'], shape=[]), dtype=tf.float32) - 1
-
-  return image, tf.one_hot(label, FLAGS.class_num)
 
 def input_fn(is_training, data_dir, batch_size, num_epochs=1):
   """Input function which provides batches for train or eval."""
@@ -124,11 +73,7 @@ def input_fn(is_training, data_dir, batch_size, num_epochs=1):
     dataset = dataset.shard(worker_num, worker_id)
 
   dataset = dataset.flat_map(tf.data.TFRecordDataset)
-  if FLAGS.with_bbox:
-    dataset = dataset.map(lambda value: record_parser_with_bbox(value, is_training),
-                        num_parallel_calls=5)
-  else:
-    dataset = dataset.map(lambda value: record_parser_without_bbox(value, is_training),
+  dataset = dataset.map(lambda value: record_parser_fn(value, is_training),
                          num_parallel_calls=5) 
   dataset = dataset.prefetch(batch_size)
 
