@@ -24,12 +24,12 @@ af ge
   * [Statistics](#statistics)
   
 * [Train](#train)
-  * [Download Images using URLs](#downloadimage)
-  * [Prepare the TFRecord File](#preparetfrecord)
+  * [Download Images using URLs](#download-image)
+  * [Prepare the TFRecord File](#prepare-tfrecord)
   * [Pretrain on ML-Images](#pretrain)
   * [Finetune on ImageNet](#finetune)
   * [Checkpoints](#checkpoint)
-  * [Feature Extraction](#featureextraction)
+  * [Feature Extraction](#feature-extraction)
  
 * [Results](#result)
 
@@ -132,7 +132,7 @@ The number of images per class and the histogram of the number of annotations in
 # [Train](#train)
 [[back to top](#)]
 
-### [Download Images using URLs](#downloadimage)
+### [Download Images using URLs](#download-image)
 [[back to top](#)]
 
 The full [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) is very large. 
@@ -144,7 +144,7 @@ cd data
 ```
 A sub-folder `data/images` will be generated to save the downloaded jpeg images, as well as a file `train_im_tiny.txt` to save the image list and the corresponding annotations. 
 
-### [Prepare the TFRecord File](#preparetfrecord)
+### [Prepare the TFRecord File](#prepare-tfrecord)
 [[back to top](#)]
 
 Here we generate the tfrecords using the multithreading module. One should firstly split the file `train_im_tiny.txt` into multiple smaller files, and save them into the sub-folder `data/image_lists/`. 
@@ -179,7 +179,7 @@ Then, you can finetune the ResNet-101 model on ImageNet as follows, with the che
 
 Please download above two checkpoints and move them into the folder `checkpoints/`, if you want to extract features using them.
 
-### [Feature extraction](#featureextraction)
+### [Feature extraction](#feature-extraction)
 [[back to top](#)]
 
 ```
