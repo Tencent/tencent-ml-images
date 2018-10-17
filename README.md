@@ -103,7 +103,7 @@ Since the image URLs of ML-Images are collected from ImageNet and Open Images, t
 original annotations from ImageNet and Open Images. Note that the original annotations from Open Images are licensed by Google Inc. under [CC BY-4.0](https://creativecommons.org/licenses/by/4.0/). Specifically, we conduct the following steps to construct the new annotations of ML-Images. 
 * For the 6,902,811 training URLs from Open Images, we remove the annotated tags that are out of the remained 1,134 categories.
 * According to the constructed [semantic hierarchy](data/dictionary_and_semantic_hierarchy.txt) of 11,166 categories, we augment the annotations of all URLs of ML-Images following the cateria that if one URL is annotated with category i, then all ancestor categories will also be annotated to this URL. 
-* We train a ResNet-101 model based on the 6,902,811 training URLs from Open Images, with 1,134 outputs. Using this ResNet-101 model, we predict the tags from 1,134 categories for the 11,117,070 single-annotated image URLs from ImageNet. Consequently, we obtain a normalized co-occurrence matrix between 10,032 categories from ImageNet and 1,134 categories from Open Images. We can determine the strongly co-occurrenced pairs of categories. For example, category i and j are strongly co-occurrenced; then, if one image is annotated with category i, then category j should also be annotated. 
+* We train a ResNet-101 model based on the 6,902,811 training URLs from Open Images, with 1,134 outputs. Using this ResNet-101 model, we predict the tags from 1,134 categories for the 10,756,941 single-annotated image URLs from ImageNet. Consequently, we obtain a normalized co-occurrence matrix between 10,032 categories from ImageNet and 1,134 categories from Open Images. We can determine the strongly co-occurrenced pairs of categories. For example, category i and j are strongly co-occurrenced; then, if one image is annotated with category i, then category j should also be annotated. 
 
 The annotations of all training URLs in ML-Images are stored in [data/dictionary_and_semantic_hierarchy.txt](data/dictionary_and_semantic_hierarchy.txt).
 
@@ -120,7 +120,7 @@ The main statistics of ML-Images are summarized in ML-Images.
                                                       
 | # Train images  | # Validation images  | # Classes | # Trainable Classes | # Avg tags per image |  # Avg images per class |
 | :-------------: |:--------------------:| :--------:| :-----------------: |:-------------------:|  :---------------------:|
-| 17,659,752       | --             | 11,166    | 10,505              |  8    |  1447.2 |
+| 17,659,752       | 88,739          | 11,166    | 10,505              |  8    |  1447.2 |
 
 Note: *Trainable class* indicates the class that has over 100 train images.
 
