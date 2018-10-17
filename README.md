@@ -176,7 +176,7 @@ Then, you can finetune the ResNet-101 model on ImageNet as follows, with the che
 
 Please download above two checkpoints and move them into the folder `checkpoints/`, if you want to extract features using them.
 
-### [Feature extraction](#feature-extraction)
+### [Feature Extraction](#feature-extraction)
 [[back to top](#)]
 
 ```
