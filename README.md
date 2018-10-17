@@ -49,8 +49,8 @@ af ge
 ### [Download](#download)
 [[back to top](#)]
 
-The image URLs and the corresponding annotations can be downloaded from [train_url.txt](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt). Please move the downloaded txt file into `data/`. 
-The format is as follows
+The image URLs and the corresponding annotations can be downloaded from [train_urls.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) and [val_urls.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/val_urls.txt). Please move the downloaded txt file into `data/`. 
+The format of `train_urls.txt` is as follows
 
 ```
 ...
@@ -66,10 +66,10 @@ As shown above, one image corresponds to one row. The first term is the image UR
 
 The image URLs of ML-Images are collected from [ImageNet](http://www.image-net.org/) and [Open Images](https://github.com/openimages/dataset). 
 Specifically,  
-* Part 1: From the whole database of ImageNet, we adopt 11,117,070 image URLs and 10,032 categories.
-* Part 2: From Open Images, we adopt 6,902,811 training and 159,424 validation image URLs, covering 1,134 unique categories (note that some other categories are merged with their synonymous categories from ImageNet). 
+* Part 1: From the whole database of ImageNet, we adopt 10,706,941 training and 50,000 validation image URLs, covering 10,032 categories.
+* Part 2: From Open Images, we adopt 6,902,811 training and 38,739 validation image URLs, covering 1,134 unique categories (note that some other categories are merged with their synonymous categories from ImageNet). 
 
-Finally, the number of training URLs in ML-Images is 17,659,752, and the number of categories is 11,166. 
+Finally, ML-Images includes 17,609,752 training and 88,739 validation image URLs, covering 11,166 categories. 
 
 <!---
 The image URLs of ML-Images are collected from [ImageNet](http://www.image-net.org/) and [Open Images](https://github.com/openimages/dataset). 
