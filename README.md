@@ -142,6 +142,8 @@ cd data
 ```
 A sub-folder `data/images` will be generated to save the downloaded jpeg images, as well as a file `train_im_tiny.txt` to save the image list and the corresponding annotations. 
 
+**Note**：Some URLs in [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
+
 ### [Prepare the TFRecord File](#prepare-tfrecord)
 [[back to top](#)]
 
@@ -150,7 +152,6 @@ Here we generate the tfrecords using the multithreading module. One should first
 cd data
 ./tfrecord.sh
 ```
-Note that some URLs in [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
 
 ### [Pretrain on ML-Images](#pretrain)
 [[back to top](#)]
