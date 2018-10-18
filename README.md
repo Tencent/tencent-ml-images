@@ -46,7 +46,13 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 ### [Download](#download)
 [[back to top](#)]
 
-The image URLs and the corresponding annotations can be downloaded from [train_urls.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) and [val_urls.txt](https://pan.baidu.com/s/1BfipStD2PY7MAMRoZa9ecg). Please move the downloaded txt file into `data/`. 
+* train_url.txt ([link1](https://drive.google.com/open?id=1ExY0GpRWxGzDHAI-p44m-B0AB76NeLy7), [link2](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg))
+* val_urls.txt ([link1](https://drive.google.com/open?id=13SSar872e73UcshIW7IGbmvUGcFjHyxg), [link2](https://pan.baidu.com/s/1BfipStD2PY7MAMRoZa9ecg))
+
+The image URLs and the corresponding annotations can be downloaded above. 
+<!---
+from [train_urls.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) and [val_urls.txt](https://pan.baidu.com/s/1BfipStD2PY7MAMRoZa9ecg). Please move the downloaded txt file into `data/`. 
+--->
 The format of `train_urls.txt` is as follows
 
 ```
@@ -102,7 +108,7 @@ original annotations from ImageNet and Open Images. Note that the original annot
 * According to the constructed [semantic hierarchy](data/dictionary_and_semantic_hierarchy.txt) of 11,166 categories, we augment the annotations of all URLs of ML-Images following the cateria that if one URL is annotated with category i, then all ancestor categories will also be annotated to this URL. 
 * We train a ResNet-101 model based on the 6,902,811 training URLs from Open Images, with 1,134 outputs. Using this ResNet-101 model, we predict the tags from 1,134 categories for the 10,756,941 single-annotated image URLs from ImageNet. Consequently, we obtain a normalized co-occurrence matrix between 10,032 categories from ImageNet and 1,134 categories from Open Images. We can determine the strongly co-occurrenced pairs of categories. For example, category i and j are strongly co-occurrenced; then, if one image is annotated with category i, then category j should also be annotated. 
 
-The annotations of all URLs in ML-Images are stored in [train_urls.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) and [val_urls.txt](https://pan.baidu.com/s/1BfipStD2PY7MAMRoZa9ecg).
+The annotations of all URLs in ML-Images are stored in `train_urls.txt` and `val_urls.txt`.
 
 <!---
 （有关Open Images的部分，因为Annotations是适用CC BY-4.0（https://creativecommons.org/licenses/by/4.0/），所以如果有修改的话，是需要注明的。 License文件我会提，但您们rearme最好也要写，可以参考：https://wiki.creativecommons.org/wiki/Best_practices_for_attribution#This_is_a_good_attribution_for_material_you_modified_slightly
@@ -134,11 +140,6 @@ The number of images per class and the histogram of the number of annotations in
 ### [Download Images using URLs](#download-image)
 [[back to top](#)]
 
-* train_url.txt ([link1](https://drive.google.com/open?id=1ExY0GpRWxGzDHAI-p44m-B0AB76NeLy7), [link2](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg))
-* val_urls.txt ([link1](https://drive.google.com/open?id=13SSar872e73UcshIW7IGbmvUGcFjHyxg), [link2](https://pan.baidu.com/s/1BfipStD2PY7MAMRoZa9ecg))
-* train_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1iK5j1zJ7SkitQ3ZIblYbUalAr5nFlngj), [link2]()) 
-* val_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1ojVU0TIA3n9ytOW8p94IWbGD8QfXAfNj), [link2](https://pan.baidu.com/s/1p5sQrMUbfxiG94OjHj9-mQ))
-
 
 The full `train_url.txt` is very large. 
 Here we provide a tiny file [train_urls_tiny.txt](data/train_urls_tiny.txt) to demonstrate the downloading procedure.
@@ -154,7 +155,11 @@ A sub-folder `data/images` will be generated to save the downloaded jpeg images,
 --->
 
 **Note**：As many URLs from ImageNet have expired, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. We provide two new files that include the corresponding image index of ImageNet for each URL that is from ImageNet, including 
-`train_urls_and_index_from_imagenet.txt` and `val_urls_and_index_from_imagenet.txt`. The format is as follows
+`train_urls_and_index_from_imagenet.txt` and `val_urls_and_index_from_imagenet.txt`. 
+* train_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1iK5j1zJ7SkitQ3ZIblYbUalAr5nFlngj), [link2](https://pan.baidu.com/s/145sGwH8Tv3RVwXZ95DuN4w)) 
+* val_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1ojVU0TIA3n9ytOW8p94IWbGD8QfXAfNj), [link2](https://pan.baidu.com/s/1p5sQrMUbfxiG94OjHj9-mQ))
+
+The format is as follows
 ```
 ...
 n03874293_7679  http://image24.webshots.com/24/5/62/52/2807562520031003846EfpYGc_fs.jpg 2964:1  2944:1  2913:1  2896:1  2577:1  1833:1  1054:1  1041:1  865:1   2:1
@@ -193,8 +198,8 @@ Then, you can finetune the ResNet-101 model on ImageNet as follows, with the che
 ### [Checkpoints](#checkpoint)
 [[back to top](#)]
 
-* ckpt-resnet101-mlimages ([link1](https://drive.google.com/open?id=1FKkw2HD0jrCJKOM_kpyOvZ_m_YPA9tdV), [link2](https://pan.baidu.com/s/1166673BNWuIeWxD7lf6RNA)): ResNet-101 checkpoint pretrained on ML-Images
-* ckpt-resnet101-mlimages-imagenet ([link1](https://drive.google.com/open?id=1wIhRemoPxTw7uDz-TlwfYJsOR2usb2kg), [link2](https://pan.baidu.com/s/1UE7gavcVznYVA5NZ-GFAvg)): ResNet-101 checkpoint pretrained on ML-Images and finetuned on ImageNet
+* ckpt-resnet101-mlimages ([link1](https://drive.google.com/open?id=1FKkw2HD0jrCJKOM_kpyOvZ_m_YPA9tdV), [link2](https://pan.baidu.com/s/1166673BNWuIeWxD7lf6RNA)): pretrained on ML-Images
+* ckpt-resnet101-mlimages-imagenet ([link1](https://drive.google.com/open?id=1wIhRemoPxTw7uDz-TlwfYJsOR2usb2kg), [link2](https://pan.baidu.com/s/1UE7gavcVznYVA5NZ-GFAvg)): pretrained on ML-Images and finetuned on ImageNet (ILSVRC2012)
 
 Please download above two checkpoints and move them into the folder `checkpoints/`, if you want to extract features using them.
 
@@ -209,7 +214,7 @@ Please download above two checkpoints and move them into the folder `checkpoints
 # [Results](#result)
 [[back to top](#)]
 
-The retults of different ResNet-101 checkpoints on the validation set of ImageNet are summarized in the following table. 
+The retults of different ResNet-101 checkpoints on the validation set of ImageNet (ILSVRC2012) are summarized in the following table. 
 
 
 | Checkpoints | Train and finetune setting  | <sub> Top-1 acc<br>on Val 224 </sub> | <sub> Top-5 acc<br>on Val 224 </sub> | <sub> Top-1 acc<br>on Val 299 </sub> | <sub> Top-5 accuracy<br>on Val 299 </sub> |
