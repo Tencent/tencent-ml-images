@@ -133,7 +133,7 @@ The number of images per class and the histogram of the number of annotations in
 ### [Download Images using URLs](#download-image)
 [[back to top](#)]
 
-The full [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) is very large. 
+The full [train_url.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) is very large. 
 Here we provide a tiny file [train_urls_tiny.txt](data/train_urls_tiny.txt) to demonstrate the downloading procedure.
 
 ```
@@ -142,7 +142,7 @@ cd data
 ```
 A sub-folder `data/images` will be generated to save the downloaded jpeg images, as well as a file `train_im_tiny.txt` to save the image list and the corresponding annotations. 
 
-**Note**：Some URLs in [train_url.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
+**Note**：Some URLs in [train_url.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
 
 ### [Prepare the TFRecord File](#prepare-tfrecord)
 [[back to top](#)]
