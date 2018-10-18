@@ -45,7 +45,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 ### [Download](#download)
 [[back to top](#)]
 
-The image URLs and the corresponding annotations can be downloaded from [train_urls.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) and [val_urls.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/val_urls.txt). Please move the downloaded txt file into `data/`. 
+The image URLs and the corresponding annotations can be downloaded from [train_urls.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) and [val_urls.txt](https://pan.baidu.com/s/1BfipStD2PY7MAMRoZa9ecg). Please move the downloaded txt file into `data/`. 
 The format of `train_urls.txt` is as follows
 
 ```
@@ -101,7 +101,7 @@ original annotations from ImageNet and Open Images. Note that the original annot
 * According to the constructed [semantic hierarchy](data/dictionary_and_semantic_hierarchy.txt) of 11,166 categories, we augment the annotations of all URLs of ML-Images following the cateria that if one URL is annotated with category i, then all ancestor categories will also be annotated to this URL. 
 * We train a ResNet-101 model based on the 6,902,811 training URLs from Open Images, with 1,134 outputs. Using this ResNet-101 model, we predict the tags from 1,134 categories for the 10,756,941 single-annotated image URLs from ImageNet. Consequently, we obtain a normalized co-occurrence matrix between 10,032 categories from ImageNet and 1,134 categories from Open Images. We can determine the strongly co-occurrenced pairs of categories. For example, category i and j are strongly co-occurrenced; then, if one image is annotated with category i, then category j should also be annotated. 
 
-The annotations of all URLs in ML-Images are stored in [train_urls.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/train_urls.txt) and [val_urls.txt](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/val_urls.txt).
+The annotations of all URLs in ML-Images are stored in [train_urls.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) and [val_urls.txt](https://pan.baidu.com/s/1BfipStD2PY7MAMRoZa9ecg).
 
 <!---
 （有关Open Images的部分，因为Annotations是适用CC BY-4.0（https://creativecommons.org/licenses/by/4.0/），所以如果有修改的话，是需要注明的。 License文件我会提，但您们rearme最好也要写，可以参考：https://wiki.creativecommons.org/wiki/Best_practices_for_attribution#This_is_a_good_attribution_for_material_you_modified_slightly
@@ -173,8 +173,8 @@ Then, you can finetune the ResNet-101 model on ImageNet as follows, with the che
 ### [Checkpoints](#checkpoint)
 [[back to top](#)]
 
-* [ckpt-resnet101-mlimages](	https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/ckpt-resnet101-mlimages.zip): ResNet-101 checkpoint pretrained on ML-Images
-* [ckpt-resnet101-mlimages-imagenet](https://tencent-ml-images-1257811961.cos.ap-guangzhou.myqcloud.com/ckpt-resnet101-mlimages-imagenet.zip): ResNet-101 checkpoint pretrained on ML-Images and finetuned on ImageNet
+* [ckpt-resnet101-mlimages](https://pan.baidu.com/s/1166673BNWuIeWxD7lf6RNA): ResNet-101 checkpoint pretrained on ML-Images
+* [ckpt-resnet101-mlimages-imagenet](https://pan.baidu.com/s/1UE7gavcVznYVA5NZ-GFAvg): ResNet-101 checkpoint pretrained on ML-Images and finetuned on ImageNet
 
 Please download above two checkpoints and move them into the folder `checkpoints/`, if you want to extract features using them.
 
