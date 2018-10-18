@@ -5,7 +5,8 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 * **ML-Images**: the largest open-source multi-label image database, including 17,609,752 training and 88,739 validation image URLs, which are annotated with up to 11,166 categories
 * **Resnet-101 model**: it is pre-trained on ML-Images, and achieves the top-1 accuracy 80.73% on ImageNet via transfer learning
 
-
+## Updates
+* **Note**: A part of URLs of ML-Images is collected from [ImageNet](http://www.image-net.org/). However, as many URLs from ImageNet have expired, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. Then, you can obtain the original image from ImageNet, if the URL is invalid. Please see `Download Images using URLs` for details.
 
 # Contents
 
@@ -133,7 +134,13 @@ The number of images per class and the histogram of the number of annotations in
 ### [Download Images using URLs](#download-image)
 [[back to top](#)]
 
-The full [train_url.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) is very large. 
+* train_url.txt ([link1](https://drive.google.com/open?id=1ExY0GpRWxGzDHAI-p44m-B0AB76NeLy7), [link2](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg))
+* val_urls.txt ([link1](https://drive.google.com/open?id=13SSar872e73UcshIW7IGbmvUGcFjHyxg), [link2](https://pan.baidu.com/s/1BfipStD2PY7MAMRoZa9ecg))
+* train_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1iK5j1zJ7SkitQ3ZIblYbUalAr5nFlngj), [link2]()) 
+* val_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1ojVU0TIA3n9ytOW8p94IWbGD8QfXAfNj), [link2](https://pan.baidu.com/s/1p5sQrMUbfxiG94OjHj9-mQ))
+
+
+The full `train_url.txt` is very large. 
 Here we provide a tiny file [train_urls_tiny.txt](data/train_urls_tiny.txt) to demonstrate the downloading procedure.
 
 ```
@@ -142,7 +149,20 @@ cd data
 ```
 A sub-folder `data/images` will be generated to save the downloaded jpeg images, as well as a file `train_im_tiny.txt` to save the image list and the corresponding annotations. 
 
+<!---
 **Note**：Some URLs in [train_url.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
+--->
+
+**Note**：As many URLs from ImageNet have expired, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. We provide two new files that include the corresponding image index of ImageNet for each URL that is from ImageNet, including 
+`train_urls_and_index_from_imagenet.txt` and `val_urls_and_index_from_imagenet.txt`. The format is as follows
+```
+...
+n03874293_7679  http://image24.webshots.com/24/5/62/52/2807562520031003846EfpYGc_fs.jpg 2964:1  2944:1  2913:1  2896:1  2577:1  1833:1  1054:1  1041:1  865:1   2:1
+n03580845_3376  http://i02.c.aliimg.com/img/offer/22/85/63/27/9/228563279   3618:1  3604:1  1835:1  1054:1  1041:1  865:1   2:1
+...
+```
+In each row, the first term is the image index in ImageNet, and the followings are the corresponding URL and annotations. 
+Using these two files, you can directly obtain the original image from ImageNet, if the URL is invalid. 
 
 ### [Prepare the TFRecord File](#prepare-tfrecord)
 [[back to top](#)]
@@ -173,8 +193,8 @@ Then, you can finetune the ResNet-101 model on ImageNet as follows, with the che
 ### [Checkpoints](#checkpoint)
 [[back to top](#)]
 
-* [ckpt-resnet101-mlimages](https://pan.baidu.com/s/1166673BNWuIeWxD7lf6RNA): ResNet-101 checkpoint pretrained on ML-Images
-* [ckpt-resnet101-mlimages-imagenet](https://pan.baidu.com/s/1UE7gavcVznYVA5NZ-GFAvg): ResNet-101 checkpoint pretrained on ML-Images and finetuned on ImageNet
+* ckpt-resnet101-mlimages ([link1](https://drive.google.com/open?id=1FKkw2HD0jrCJKOM_kpyOvZ_m_YPA9tdV), [link2](https://pan.baidu.com/s/1166673BNWuIeWxD7lf6RNA)): ResNet-101 checkpoint pretrained on ML-Images
+* ckpt-resnet101-mlimages-imagenet ([link1](https://drive.google.com/open?id=1wIhRemoPxTw7uDz-TlwfYJsOR2usb2kg), [link2](https://pan.baidu.com/s/1UE7gavcVznYVA5NZ-GFAvg)): ResNet-101 checkpoint pretrained on ML-Images and finetuned on ImageNet
 
 Please download above two checkpoints and move them into the folder `checkpoints/`, if you want to extract features using them.
 
