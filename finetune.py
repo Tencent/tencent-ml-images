@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 """
 Tencent is pleased to support the open source community by making Tencent ML-Images available.
 Copyright (C) 2018 THL A29 Limited, a Tencent company. All rights reserved.
@@ -6,8 +8,8 @@ https://opensource.org/licenses/BSD-3-Clause
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 """
 
+from __future__ import print_function
 
-#!/usr/bin/python
 import sys
 import os
 import time
@@ -34,13 +36,13 @@ def assign_weights_from_cp(cpk_path, sess, scope):
         with tf.variable_scope(scope, reuse=True):
             try:
                 if key.find(r'global_step')!=-1 or key.find(r'Momentum')!=-1 or key.find(r'logits')!=-1:
-                    print "do not need restore from ckpt key:%s" % key
+                    print("do not need restore from ckpt key:%s" % key)
                     continue
                 var = tf.get_variable(key)
                 sess.run(var.assign(reader.get_tensor(key)))
-                print "restore from ckpt key:%s" % key
+                print("restore from ckpt key:%s" % key)
             except ValueError:
-                print "can not restore from ckpt key:%s" % key
+                print("can not restore from ckpt key:%s" % key)
 
 def record_parser_fn(value, is_training):
     """Parse an image record from `value`."""
@@ -130,7 +132,7 @@ def train(train_dataset, is_training=True):
         worker_num = 1
         num_preprocess_threads = FLAGS.num_preprocess_threads * FLAGS.num_gpus
         batch_size = FLAGS.batch_size * FLAGS.num_gpus
-        print 'batch_size={}'.format(batch_size)
+        print('batch_size={}'.format(batch_size))
         dataset = tf.data.Dataset.from_tensor_slices(train_dataset.data_files())
         dataset = dataset.shuffle(buffer_size=FLAGS.file_shuffle_buffer, seed=worker_num)
         dataset = dataset.flat_map(tf.data.TFRecordDataset)
@@ -161,7 +163,7 @@ def train(train_dataset, is_training=True):
 
         #building graphs
         with tf.variable_scope(tf.get_variable_scope()):
-            print >> sys.stderr, "Building graph ..."
+            print("Building graph ...", file=sys.stderr)
             for i in xrange(FLAGS.num_gpus):
                 with tf.device("/gpu:%d" % i):
                     with tf.name_scope("%s_%d" % ("tower", i)) as scope:
@@ -186,7 +188,7 @@ def train(train_dataset, is_training=True):
                         grads = optimizer.compute_gradients(Loss, var_list=finetune_vars)
                         tower_grads.append(grads)
 
-                        print >> sys.stderr, "Build Graph (%s/%s)" % (i+1, FLAGS.num_gpus)
+                        print("Build Graph (%s/%s)" % (i+1, FLAGS.num_gpus), file=sys.stderr)
         summaries.append(summary)
         summaries.append(tf.summary.scalar('learning_rate', lr))
 
@@ -206,7 +208,7 @@ def train(train_dataset, is_training=True):
 
         # Initialize Model
         if FLAGS.restore:
-            print >> sys.stderr, "Restoring checkpoint from %s" % FLAGS.pretrain_ckpt
+            print("Restoring checkpoint from %s" % FLAGS.pretrain_ckpt, file=sys.stderr)
             sess.run(tf.global_variables_initializer())
             sess.run(tf.local_variables_initializer())
             
@@ -214,7 +216,7 @@ def train(train_dataset, is_training=True):
             assign_weights_from_cp(FLAGS.pretrain_ckpt, sess, tf.get_variable_scope())
 
         else:
-            print >> sys.stderr, "Run global_variables_initializer .."
+            print("Run global_variables_initializer ..", file=sys.stderr)
             sess.run(tf.global_variables_initializer())
             sess.run(tf.local_variables_initializer())
 
