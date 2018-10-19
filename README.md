@@ -154,7 +154,8 @@ A sub-folder `data/images` will be generated to save the downloaded jpeg images,
 **Note**：Some URLs in [train_url.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
 --->
 
-**Note**：As many URLs from ImageNet have expired, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. We provide two new files that include the corresponding image index of ImageNet for each URL that is from ImageNet, including 
+#### How to handle the invalid URLs during downloading? 
+As many URLs from ImageNet have expired, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. We provide two new files that include the corresponding image index of ImageNet for each URL that is from ImageNet, including 
 `train_urls_and_index_from_imagenet.txt` and `val_urls_and_index_from_imagenet.txt`. 
 * train_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1iK5j1zJ7SkitQ3ZIblYbUalAr5nFlngj), [link2](https://pan.baidu.com/s/145sGwH8Tv3RVwXZ95DuN4w)) 
 * val_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1ojVU0TIA3n9ytOW8p94IWbGD8QfXAfNj), [link2](https://pan.baidu.com/s/1p5sQrMUbfxiG94OjHj9-mQ))
@@ -168,6 +169,10 @@ n03580845_3376  http://i02.c.aliimg.com/img/offer/22/85/63/27/9/228563279   3618
 ```
 In each row, the first term is the image index in ImageNet, and the followings are the corresponding URL and annotations. 
 Using these two files, you can directly obtain the original image from ImageNet, if the URL is invalid. 
+
+In `train_urls.txt`, the first 10,706,941 rows are URLs from ImageNet, while the other URLs are from Open Images. 
+In `val_urls.txt`, the first 50,000 rows are URLs from ImageNet, while the other URLs are from Open Images. 
+One can split them to obtain the URL list from Open Images, where most URLs are valid. 
 
 ### [Prepare the TFRecord File](#prepare-tfrecord)
 [[back to top](#)]
