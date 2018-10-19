@@ -6,7 +6,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 * **Resnet-101 model**: it is pre-trained on ML-Images, and achieves the top-1 accuracy 80.73% on ImageNet via transfer learning
 
 ## Updates
-* **Note**: A part of URLs of ML-Images is collected from [ImageNet](http://www.image-net.org/). However, as many URLs from ImageNet have expired, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. Then, you can obtain the original image from ImageNet, if the URL is invalid. Please see `Download Images using URLs` for details.
+* **NOTE**: A part of URLs of ML-Images is collected from [ImageNet](http://www.image-net.org/). However, many URLs from ImageNet have expired. Thus, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. Then, you can obtain the original image from ImageNet, if the URL is invalid. Please see [How to handle the invalid URLs during downloading?](#invalid-URLs) for details.
 
 # Contents
 
@@ -21,6 +21,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
   
 * [Train](#train)
   * [Download Images using URLs](#download-image)
+    * [How to handle the invalid URLs during downloading?](#invalid-URLs)
   * [Prepare the TFRecord File](#prepare-tfrecord)
   * [Pretrain on ML-Images](#pretrain)
   * [Finetune on ImageNet](#finetune)
@@ -154,7 +155,7 @@ A sub-folder `data/images` will be generated to save the downloaded jpeg images,
 **Note**：Some URLs in [train_url.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
 --->
 
-#### How to handle the invalid URLs during downloading? 
+#### [How to handle the invalid URLs during downloading?](#invalid-URLs)
 As many URLs from ImageNet have expired, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. We provide two new files that include the corresponding image index of ImageNet for each URL that is from ImageNet, including 
 `train_urls_and_index_from_imagenet.txt` and `val_urls_and_index_from_imagenet.txt`. 
 * train_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1iK5j1zJ7SkitQ3ZIblYbUalAr5nFlngj), [link2](https://pan.baidu.com/s/145sGwH8Tv3RVwXZ95DuN4w)) 
