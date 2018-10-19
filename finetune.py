@@ -21,6 +21,11 @@ from data_processing import dataset as file_db
 from data_processing import image_preprocessing as image_preprocess
 from flags import FLAGS
 
+try:
+    xrange          # Python 2
+except NameError:
+    xrange = range  # Python 3
+
 #os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3"
 
 def assign_weights_from_cp(cpk_path, sess, scope):
