@@ -7,6 +7,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 
 ## Updates
 * **NOTE**: A part of URLs of ML-Images is collected from [ImageNet](http://www.image-net.org/). However, many URLs from ImageNet have expired. Thus, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. Then, you can obtain the original image from ImageNet, if the URL is invalid. Please see [How to handle the invalid URLs during downloading?](#invalid-URLs) for details.
+* We provide a new file [download_urls_multithreading.sh](data/download_urls_multithreading.sh), which could download images using multi-threading module. Most URLs that are not from ImageNet are valid. Please refer to  `Download Images using URLs` for details.
 
 # Contents
 
@@ -47,7 +48,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 ### [Download](#download)
 [[back to top](#)]
 
-* train_url.txt ([link1](https://drive.google.com/open?id=1ExY0GpRWxGzDHAI-p44m-B0AB76NeLy7), [link2](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg))
+* train_urls.txt ([link1](https://drive.google.com/open?id=1ExY0GpRWxGzDHAI-p44m-B0AB76NeLy7), [link2](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg))
 * val_urls.txt ([link1](https://drive.google.com/open?id=13SSar872e73UcshIW7IGbmvUGcFjHyxg), [link2](https://pan.baidu.com/s/1BfipStD2PY7MAMRoZa9ecg))
 
 The image URLs and the corresponding annotations can be downloaded above. 
@@ -142,14 +143,14 @@ The number of images per class and the histogram of the number of annotations in
 [[back to top](#)]
 
 
-The full `train_url.txt` is very large. 
+The full `train_urls.txt` is very large. 
 Here we provide a tiny file [train_urls_tiny.txt](data/train_urls_tiny.txt) to demonstrate the downloading procedure.
 
 ```
 cd data
-./download_im_from_url.py --url_list=train_urls_tiny.txt --im_list=train_im_tiny.txt --save_dir='images/'
+download_urls_multithreading.sh
 ```
-A sub-folder `data/images` will be generated to save the downloaded jpeg images, as well as a file `train_im_tiny.txt` to save the image list and the corresponding annotations. 
+A sub-folder `data/images` will be generated to save the downloaded jpeg images, as well as a file `train_im_list_tiny.txt` to save the image list and the corresponding annotations. 
 
 <!---
 **Note**：Some URLs in [train_url.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
@@ -178,7 +179,7 @@ One can split them to obtain the URL list from Open Images, where most URLs are 
 ### [Prepare the TFRecord File](#prepare-tfrecord)
 [[back to top](#)]
 
-Here we generate the tfrecords using the multithreading module. One should firstly split the file `train_im_tiny.txt` into multiple smaller files, and save them into the sub-folder `data/image_lists/`. 
+Here we generate the tfrecords using the multithreading module. One should firstly split the file `train_im_list_tiny.txt` into multiple smaller files, and save them into the sub-folder `data/image_lists/`. 
 ```
 cd data
 ./tfrecord.sh
