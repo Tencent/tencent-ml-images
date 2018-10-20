@@ -148,7 +148,7 @@ Here we provide a tiny file [train_urls_tiny.txt](data/train_urls_tiny.txt) to d
 
 ```
 cd data
-download_urls_multithreading.sh
+./download_urls_multithreading.sh
 ```
 A sub-folder `data/images` will be generated to save the downloaded jpeg images, as well as a file `train_im_list_tiny.txt` to save the image list and the corresponding annotations. 
 
