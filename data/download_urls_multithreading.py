@@ -30,7 +30,7 @@ def downloadImg(start, end, url_list, save_dir):
                 record += 1
                 im_file_Record.write(im_name + '\t' + '\t'.join(sp[1:]) + '\n')
                 print('url = {} is finished and {} imgs have been downloaded of all {} imgs'.format(url, record, count))
-            except IOError, e:
+            except IOError as e:
                 print ("The url:{} is ***INVALID***".format(url))
                 invalid_file.write(url + '\n')
                 count_invalid += 1
