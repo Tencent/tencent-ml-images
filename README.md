@@ -184,19 +184,22 @@ Here we generate the tfrecords using the multithreading module. One should first
 cd data
 ./tfrecord.sh
 ```
+Multiple tfrecords (named like `x.tfrecords`) will saved to `data/tfrecords/`.
 
 ### [Pretrain on ML-Images](#pretrain)
 [[back to top](#)]
 
+Before training, one should move the train and validation tfrecords to `data/ml-images/train` and `data/ml-images/val`, respectively. 
+Then, 
 ```
 ./example/train.sh
 ```
-Note that here we only provide the training code in the single node single GPU framework, while our actual training on ML-Images is based on an internal distributed training framework (not released yet). One could modify the training code to the distributed framework following [distributed tensorFlow](https://www.tensorflow.org/deploy/distributed). 
+**Note**: Here we only provide the training code in the single node single GPU framework, while our actual training on ML-Images is based on an internal distributed training framework (not released yet). One could modify the training code to the distributed framework following [distributed tensorFlow](https://www.tensorflow.org/deploy/distributed). 
 
 ### [Finetune on ImageNet](#finetune)
 [[back to top](#)]
 
-One should firstly download the ImageNet database, then prepare the tfrecord file using [tfrecord.sh](example/tfrecord.sh). 
+One should firstly download the ImageNet (ILSVRC2012) database, then prepare the tfrecord file using [tfrecord.sh](example/tfrecord.sh). 
 Then, you can finetune the ResNet-101 model on ImageNet as follows, with the checkpoint pre-trained on ML-Images.
 ```
 ./example/finetune.sh
