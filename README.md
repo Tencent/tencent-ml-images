@@ -8,6 +8,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 ## Updates
 * **NOTE**: A part of URLs of ML-Images is collected from [ImageNet](http://www.image-net.org/). However, many URLs from ImageNet have expired. Thus, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. Then, you can obtain the original image from ImageNet, if the URL is invalid. Please see [How to handle the invalid URLs during downloading?](#invalid-URLs) for details.
 * We provide a new file [download_urls_multithreading.sh](data/download_urls_multithreading.sh), which could download images using multi-threading module. Most URLs that are not from ImageNet are valid. Please refer to  `Download Images using URLs` for details.
+* A demo for single-label image classification has been added to `Single-Label Image Classification`. One can use the provided checkpoint to predict the label of any custom image.
 
 # Contents
 
@@ -27,6 +28,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
   * [Pretrain on ML-Images](#pretrain)
   * [Finetune on ImageNet](#finetune)
   * [Checkpoints](#checkpoint)
+  * [Single-Label Image Classification](#classification)
   * [Feature Extraction](#feature-extraction)
  
 
@@ -212,6 +214,14 @@ Then, you can finetune the ResNet-101 model on ImageNet as follows, with the che
 * ckpt-resnet101-mlimages-imagenet ([link1](https://drive.google.com/open?id=1wIhRemoPxTw7uDz-TlwfYJsOR2usb2kg), [link2](https://pan.baidu.com/s/1UE7gavcVznYVA5NZ-GFAvg)): pretrained on ML-Images and finetuned on ImageNet (ILSVRC2012)
 
 Please download above two checkpoints and move them into the folder `checkpoints/`, if you want to extract features using them.
+
+### [Single-Label Image Classification](#classification)
+
+Here we provide a demo for single-label image-classification, using the checkpoint `ckpt-resnet101-mlimages-imagenet` downloaded above. 
+```
+./example/image_classification.sh
+```
+The prediction will be saved to `label_pred.txt`. If one wants to recognize other images, `data/im_list_for_classification.txt` should be modified to include the path of these images. 
 
 ### [Feature Extraction](#feature-extraction)
 [[back to top](#)]
