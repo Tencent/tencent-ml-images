@@ -6,8 +6,11 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 * **Resnet-101 model**: it is pre-trained on ML-Images, and achieves the top-1 accuracy 80.73% on ImageNet via transfer learning
 
 ## Updates
-* **NOTE**: A part of URLs of ML-Images is collected from [ImageNet](http://www.image-net.org/). However, many URLs from ImageNet have expired. Thus, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. Then, you can obtain the original image from ImageNet, if the URL is invalid. Please see [How to handle the invalid URLs during downloading?](#invalid-URLs) for details.
+
+<!--- * **NOTE**: A part of URLs of ML-Images is collected from [ImageNet](http://www.image-net.org/). However, many URLs from ImageNet have expired. Thus, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. Then, you can obtain the original image from ImageNet, if the URL is invalid. Please see [How to handle the invalid URLs during downloading?](#invalid-URLs) for details.
 * We provide a new file [download_urls_multithreading.sh](data/download_urls_multithreading.sh), which could download images using multi-threading module. Most URLs that are not from ImageNet are valid. Please refer to  `Download Images using URLs` for details.
+-->
+* **NOTE**: A clear demonstration about how to download the original images using URLs has been added into the subsection `How to handle the invalid URLs during downloading?`
 * A demo for single-label image classification has been added to `Single-Label Image Classification`. One can use the provided checkpoint to predict the label of any custom image.
 
 # Contents
@@ -159,7 +162,9 @@ A sub-folder `data/images` will be generated to save the downloaded jpeg images,
 --->
 
 #### [How to handle the invalid URLs during downloading?](#invalid-URLs)
-As many URLs from ImageNet have expired, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. We provide two new files that include the corresponding image index of ImageNet for each URL that is from ImageNet, including 
+##### For URLs from ImageNet
+The first 10,706,941 rows of `train_urls.txt` and the first 50,000 rows of `val_urls.txt` are URLs from ImageNet. 
+A large proportion of these URLs have expired. However, the ImageNet website could provide the original images (see http://image-net.org/download), as well as the corresponse between each image ID and its original URL. Thus, we provide two novel files, that tell the image ID of each URL used in our database, including 
 `train_urls_and_index_from_imagenet.txt` and `val_urls_and_index_from_imagenet.txt`. 
 * train_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1iK5j1zJ7SkitQ3ZIblYbUalAr5nFlngj), [link2](https://pan.baidu.com/s/145sGwH8Tv3RVwXZ95DuN4w)) 
 * val_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1ojVU0TIA3n9ytOW8p94IWbGD8QfXAfNj), [link2](https://pan.baidu.com/s/1p5sQrMUbfxiG94OjHj9-mQ))
@@ -171,12 +176,15 @@ n03874293_7679  http://image24.webshots.com/24/5/62/52/2807562520031003846EfpYGc
 n03580845_3376  http://i02.c.aliimg.com/img/offer/22/85/63/27/9/228563279   3618:1  3604:1  1835:1  1054:1  1041:1  865:1   2:1
 ...
 ```
-In each row, the first term is the image index in ImageNet, and the followings are the corresponding URL and annotations. 
-Using these two files, you can directly obtain the original image from ImageNet, if the URL is invalid. 
+In each row, the first term is the image ID in ImageNet, while other terms are the corresponding URL and annotations. 
+Then, two steps should be done to obtain the images used in ML-Images: 
+* Download the original images of the whole database of ImageNet from (http://image-net.org/download), and the corresponding URL file is `List of all image URLs of Fall 2011 Release` (see http://image-net.org/download-imageurls)
+* Pick out the images used in ML-Images, accoording to `train_urls_and_index_from_imagenet.txt` and `val_urls_and_index_from_imagenet.txt`.
 
-In `train_urls.txt`, the first 10,706,941 rows are URLs from ImageNet, while the other URLs are from Open Images. 
-In `val_urls.txt`, the first 50,000 rows are URLs from ImageNet, while the other URLs are from Open Images. 
-One can split them to obtain the URL list from Open Images, where most URLs are valid. 
+##### For URLs from Open Images
+The last 6,902,811 rows of `train_urls.txt` and the last 38,739  rows of `val_urls.txt` are URLs from ImageNet. 
+Most of these URLs are valid, and you can directly download the images using the provided `download_urls_multithreading.sh`. 
+
 
 ### [Prepare the TFRecord File](#prepare-tfrecord)
 [[back to top](#)]
