@@ -182,7 +182,7 @@ Then, two steps should be done to obtain the images used in ML-Images:
 * Pick out the images used in ML-Images, accoording to `train_urls_and_index_from_imagenet.txt` and `val_urls_and_index_from_imagenet.txt`.
 
 ##### For URLs from Open Images
-The last 6,902,811 rows of `train_urls.txt` and the last 38,739  rows of `val_urls.txt` are URLs from ImageNet. 
+The last 6,902,811 rows of `train_urls.txt` and the last 38,739  rows of `val_urls.txt` are URLs from Open Images. 
 Most of these URLs are valid, and you can directly download the images using the provided `download_urls_multithreading.sh`. 
 
 
