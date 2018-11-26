@@ -30,7 +30,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
   * [Prepare the TFRecord File](#prepare-tfrecord)
   * [Pretrain on ML-Images](#pretrain)
   * [Finetune on ImageNet](#finetune)
-  * [Checkpoints](#checkpoint)
+  * [Checkpoints](#checkpoints)
   * [Single-Label Image Classification](#classification)
   * [Feature Extraction](#feature-extraction)
  
@@ -215,7 +215,7 @@ Then, you can finetune the ResNet-101 model on ImageNet as follows, with the che
 ./example/finetune.sh
 ```
 
-### [Checkpoints](#checkpoint)
+### [Checkpoints](#checkpoints)
 [[back to top](#)]
 
 * ckpt-resnet101-mlimages ([link1](https://drive.google.com/open?id=1FKkw2HD0jrCJKOM_kpyOvZ_m_YPA9tdV), [link2](https://pan.baidu.com/s/1166673BNWuIeWxD7lf6RNA)): pretrained on ML-Images
