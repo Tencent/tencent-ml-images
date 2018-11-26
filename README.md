@@ -26,7 +26,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
   
 * [Train](#train)
   * [Download Images using URLs](#download-images-using-urls)
-    * [How to handle the invalid URLs during downloading?](#invalid-URLs)
+    * [How to handle invalid URLs during downloading?](#How-to-handle-invalid-URLs-during-downloading)
   * [Prepare the TFRecord File](#prepare-the-tfrecord-file)
   * [Pretrain on ML-Images](#pretrain-on-ml-images)
   * [Finetune on ImageNet](#finetune-on-imagenet)
@@ -161,7 +161,7 @@ A sub-folder `data/images` will be generated to save the downloaded jpeg images,
 **Note**：Some URLs in [train_url.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
 --->
 
-#### [How to handle the invalid URLs during downloading?](#invalid-URLs)
+#### [How to handle invalid URLs during downloading?](#How-to-handle-invalid-URLs-during-downloading)
 ##### For URLs from ImageNet
 The first 10,706,941 rows of `train_urls.txt` and the first 50,000 rows of `val_urls.txt` are URLs from ImageNet. 
 A large proportion of these URLs have expired. However, the ImageNet website could provide the original images (see http://image-net.org/download), as well as the corresponse between each image ID and its original URL. Thus, we provide two novel files, that tell the image ID of each URL used in our database, including 
