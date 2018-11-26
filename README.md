@@ -30,7 +30,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
   * [Prepare the TFRecord File](#prepare-tfrecord)
   * [Pretrain on ML-Images](#pretrain)
   * [Finetune on ImageNet](#finetune)
-  * [Checkpoints](#checkpoint)
+  * [Checkpoints](#checkpoints)
   * [Single-Label Image Classification](#classification)
   * [Feature Extraction](#feature-extraction)
  
