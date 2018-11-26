@@ -19,23 +19,23 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 
 * [Data](#data)
   * [Download](#download)
-  * [Image Source](#source)
-  * [Semantic Hierarchy](#hierarchy)
-  * [Annotations](#annotation)
+  * [Image Source](#image-source)
+  * [Semantic Hierarchy](#semantic-hierarchy)
+  * [Annotations](#annotations)
   * [Statistics](#statistics)
   
 * [Train](#train)
-  * [Download Images using URLs](#download-image)
+  * [Download Images using URLs](#download-images-using-urls)
     * [How to handle the invalid URLs during downloading?](#invalid-URLs)
-  * [Prepare the TFRecord File](#prepare-tfrecord)
-  * [Pretrain on ML-Images](#pretrain)
-  * [Finetune on ImageNet](#finetune)
+  * [Prepare the TFRecord File](#prepare-the-tfrecord-file)
+  * [Pretrain on ML-Images](#pretrain-on-ml-images)
+  * [Finetune on ImageNet](#finetune-on-imagenet)
   * [Checkpoints](#checkpoints)
-  * [Single-Label Image Classification](#classification)
+  * [Single-Label Image Classification](#single-label-image-classification)
   * [Feature Extraction](#feature-extraction)
  
 
-* [Results](#result)
+* [Results](#results)
 
 * [Copyright](#copyright)
 
@@ -70,7 +70,7 @@ https://c2.staticflickr.com/4/3035/3033882900_a9a4263c55_o.jpg  1053:0.8  1193:0
 ```
 As shown above, one image corresponds to one row. The first term is the image URL. The followed terms separated by space are the annotations. For example, "5193:0.9" indicates class 5193 and its confidence 0.9. Note that the class index starts from 0, and you can find the class name from the file [data/dictionary_and_semantic_hierarchy.txt](data/dictionary_and_semantic_hierarchy.txt).
 
-### [Image Source](#source)
+### [Image Source](#image-source)
 [[back to top](#)]
 
 
@@ -98,7 +98,7 @@ Consequently,  8,385,050 training URLs and 159,424 validation URLs are remained,
 --->
 
 
-### [Semantic Hierarchy](#hierarchy)
+### [Semantic Hierarchy](#semantic-hierarchy)
 [[back to top](#)]
 
 We build the semantic hiearchy of 11,166 categories, according to [WordNet](https://wordnet.princeton.edu/). 
@@ -106,7 +106,7 @@ The direct parent categories of each class can be found from the file [data/dict
 the root nodes are `thing`, `matter`, `object, physical object` and `atmospheric phenomenon`, respectively. 
 The length of the longest semantic path from root to leaf nodes is 16, and the average length is 7.47. 
 
-### [Annotations](#annotation)
+### [Annotations](#annotations)
 [[back to top](#)]
 
 Since the image URLs of ML-Images are collected from ImageNet and Open Images, the annotations of ML-Images are constructed based on the 
@@ -144,7 +144,7 @@ The number of images per class and the histogram of the number of annotations in
 # [Train](#train)
 [[back to top](#)]
 
-### [Download Images using URLs](#download-image)
+### [Download Images using URLs](#download-images-using-urls)
 [[back to top](#)]
 
 
@@ -196,7 +196,7 @@ cd data
 ```
 Multiple tfrecords (named like `x.tfrecords`) will saved to `data/tfrecords/`.
 
-### [Pretrain on ML-Images](#pretrain)
+### [Pretrain on ML-Images](#pretrain-on-ml-images)
 [[back to top](#)]
 
 Before training, one should move the train and validation tfrecords to `data/ml-images/train` and `data/ml-images/val`, respectively. 
@@ -206,7 +206,7 @@ Then,
 ```
 **Note**: Here we only provide the training code in the single node single GPU framework, while our actual training on ML-Images is based on an internal distributed training framework (not released yet). One could modify the training code to the distributed framework following [distributed tensorFlow](https://www.tensorflow.org/deploy/distributed). 
 
-### [Finetune on ImageNet](#finetune)
+### [Finetune on ImageNet](#finetune-on-imagenet)
 [[back to top](#)]
 
 One should firstly download the ImageNet (ILSVRC2012) database, then prepare the tfrecord file using [tfrecord.sh](example/tfrecord.sh). 
@@ -223,7 +223,7 @@ Then, you can finetune the ResNet-101 model on ImageNet as follows, with the che
 
 Please download above two checkpoints and move them into the folder `checkpoints/`, if you want to extract features using them.
 
-### [Single-Label Image Classification](#classification)
+### [Single-Label Image Classification](#single-label-image-classification)
 
 Here we provide a demo for single-label image-classification, using the checkpoint `ckpt-resnet101-mlimages-imagenet` downloaded above. 
 ```
@@ -239,7 +239,7 @@ The prediction will be saved to `label_pred.txt`. If one wants to recognize othe
 ```
 
 
-# [Results](#result)
+# [Results](#results)
 [[back to top](#)]
 
 The retults of different ResNet-101 checkpoints on the validation set of ImageNet (ILSVRC2012) are summarized in the following table. 
