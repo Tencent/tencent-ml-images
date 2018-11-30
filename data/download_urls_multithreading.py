@@ -25,7 +25,7 @@ def downloadImg(start, end, url_list, save_dir):
             sp = line.rstrip('\n').split('\t')
             url = sp[0]
             url_list = url.split('/')
-            im_name = url_list[-2] + '_' url_list[-1]
+            im_name = url_list[-2] + '_' + url_list[-1]
             try:
                 urllib.urlretrieve(url, os.path.join(save_dir, im_name))
                 record += 1
