@@ -17,24 +17,32 @@ import time
 import socket
 socket.setdefaulttimeout(10.0) 
 
-def downloadImg(start, end, url_list, save_dir):
-    global record,count,count_invalid,is_exit
+debug = False
+
+def downloadImg(i, url_file_mem,start, end, url_list, save_dir):
+    print('Thread {} starting, set to download from {} to {}'.format(i, start, end))
+    global record,count,count_invalid,count_already_done,is_exit
     im_names = []
-    with open(url_list, 'r')  as url_f:
-        for line in url_f.readlines()[start:end]:
-            sp = line.rstrip('\n').split('\t')
-            url = sp[0]
-            url_list = url.split('/')
-            im_name = url_list[-2] + '_' + url_list[-1]
+    for line in url_file_mem[start:end]:
+        sp = line.rstrip('\n').split('\t')
+        url = sp[0]
+        im_name = url.split('/')[-1]
+        if os.path.isfile(os.path.join(save_dir, im_name)):
+            count_already_done+=1
+            if debug: print 'T', i, count_already_done, "already done" , os.path.join(save_dir, im_name)
+        else:
             try:
+                if debug: print 'T', i, "fetching", url
                 urllib.urlretrieve(url, os.path.join(save_dir, im_name))
                 record += 1
                 im_file_Record.write(im_name + '\t' + '\t'.join(sp[1:]) + '\n')
-                print('url = {} is finished and {} imgs have been downloaded of all {} imgs'.format(url, record, count))
-            except IOError as e:
-                print ("The url:{} is ***INVALID***".format(url))
+                if debug: print('url = {} is finished and {} imgs have been downloaded of all {} imgs'.format(url, record, count))
+            except:
+                if debug: print ("The url:{} is ***INVALID***".format(url))
                 invalid_file.write(url + '\n')
                 count_invalid += 1
+    if debug: print 'T', i, 'exiting'
+
 
 if __name__ == "__main__":  
     parser = argparse.ArgumentParser()
@@ -55,29 +63,43 @@ if __name__ == "__main__":
     count = 0 # the num of urls
     count_invalid = 0 # the num of invalid urls
     record = 0
-    with open(url_list,'r') as f:
-        for line in f:
-            count += 1
-    part = int(count/num_threads)  
-    with open(im_list, 'w') as im_file_Record,open('invalid_url.txt','w') as invalid_file: # record the downloaded imgs
+    count_already_done = 0
+
+    # Open url list in main thread, share it with other threads
+    with open(url_list, 'r')  as url_f:
+        url_file_mem = url_f.readlines()
+        count = len(url_file_mem)
+        print "loaded list of %d urls"%count
+
+    part = int(count/num_threads)
+
+    with open(im_list, 'w') as im_file_Record, open('invalid_url.txt','w') as invalid_file: # record the downloaded imgs
         thread_list = []
+
+        t0 = time.time()
         for i in range(num_threads):
             if(i == num_threads-1):
-                t = threading.Thread(target = downloadImg, kwargs={'start':i*part, 'end':count, 'url_list':url_list, 'save_dir':save_dir})
+                t = threading.Thread(name='Downloader %d'%i, target = downloadImg, kwargs={"i":i,"url_file_mem":url_file_mem,'start':i*part, 'end':count, 'url_list':url_list, 'save_dir':save_dir})
             else:
-                t = threading.Thread(target = downloadImg, kwargs={'start':i*part, 'end':(i+1)*part, 'url_list':url_list, 'save_dir':save_dir})
+                t = threading.Thread(name='Downloader %d'%i, target = downloadImg, kwargs={"i":i,"url_file_mem":url_file_mem,'start':i*part, 'end':(i+1)*part, 'url_list':url_list, 'save_dir':save_dir})
             t.setDaemon(True)
             thread_list.append(t)
             t.start()
         
         for i in range(num_threads):
             try:
-                while thread_list[i].isAlive():
-                    pass
+                t = thread_list[i]
+                while t.is_alive():
+                    t.join(.25)
+                    t1 = time.time()
+                    if t1 - t0 > 1:
+                        print('{} threads. invalid={}, already={}, record={}'.format(threading.active_count(),count_invalid,count_already_done,record))
+                        t0 = t1
+                print 'Thread', t.name, ' is done'
             except KeyboardInterrupt:
                 break
 
         if count_invalid==0:
             print ("all {} imgs have been downloaded!".format(count))
         else:
-            print("{}/{} imgs have been downloaded, {} URLs are invalid".format(count-count_invalid, count, count_invalid))
+            print("{}/{} imgs have been downloaded, {} URLs are invalid".format(record, count, count_invalid))
