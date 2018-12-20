@@ -7,26 +7,24 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 
 ## Updates
 
-<!--- * **NOTE**: A part of URLs of ML-Images is collected from [ImageNet](http://www.image-net.org/). However, many URLs from ImageNet have expired. Thus, we also provide the correpsonding image indexes of ImageNet for these URLs in ML-Images. Then, you can obtain the original image from ImageNet, if the URL is invalid. Please see [How to handle the invalid URLs during downloading?](#invalid-URLs) for details.
-* We provide a new file [download_urls_multithreading.sh](data/download_urls_multithreading.sh), which could download images using multi-threading module. Most URLs that are not from ImageNet are valid. Please refer to  `Download Images using URLs` for details.
--->
-* **NOTE**: A clear demonstration about how to download the original images using URLs has been added into the subsection `How to handle the invalid URLs during downloading?`
-* A demo for single-label image classification has been added to `Single-Label Image Classification`. One can use the provided checkpoint to predict the label of any custom image.
+* [2018/12/19] We simplify the procedure of downloading images. Please see [Download Images](#download-images).
+<!--- * [2018/12/22] We release one ArXiv manuscript at XXX, to demonstrate the details of our database, the loss function and training algorithm, as well as results.  --->
+
 
 # Contents
 
 * [Dependencies](#dependencies)
 
 * [Data](#data)
-  * [Download](#download)
   * [Image Source](#image-source)
+  * [Download Images](#download-images)
+    * [Download Images from ImageNet](#download-images-from-imagenet)
+    * [Download Images from Open Images](#download-images-from-open-images)
   * [Semantic Hierarchy](#semantic-hierarchy)
   * [Annotations](#annotations)
   * [Statistics](#statistics)
   
 * [Train](#train)
-  * [Download Images using URLs](#download-images-using-urls)
-    * [How to handle invalid URLs during downloading?](#How-to-handle-invalid-URLs-during-downloading)
   * [Prepare the TFRecord File](#prepare-the-tfrecord-file)
   * [Pretrain on ML-Images](#pretrain-on-ml-images)
   * [Finetune on ImageNet](#finetune-on-imagenet)
@@ -49,26 +47,6 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 
 # [Data](#data)
 [[back to top](#)]
-
-### [Download](#download)
-[[back to top](#)]
-
-* train_urls.txt ([link1](https://drive.google.com/open?id=1ExY0GpRWxGzDHAI-p44m-B0AB76NeLy7), [link2](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg))
-* val_urls.txt ([link1](https://drive.google.com/open?id=13SSar872e73UcshIW7IGbmvUGcFjHyxg), [link2](https://pan.baidu.com/s/1BfipStD2PY7MAMRoZa9ecg))
-
-The image URLs and the corresponding annotations can be downloaded above. 
-<!---
-from [train_urls.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) and [val_urls.txt](https://pan.baidu.com/s/1BfipStD2PY7MAMRoZa9ecg). Please move the downloaded txt file into `data/`. 
---->
-The format of `train_urls.txt` is as follows
-
-```
-...
-https://c4.staticflickr.com/8/7239/6997334729_e5fb3938b1_o.jpg  3:1  5193:0.9  5851:0.9 9413:1 9416:1
-https://c2.staticflickr.com/4/3035/3033882900_a9a4263c55_o.jpg  1053:0.8  1193:0.8  1379:0.8
-...
-```
-As shown above, one image corresponds to one row. The first term is the image URL. The followed terms separated by space are the annotations. For example, "5193:0.9" indicates class 5193 and its confidence 0.9. Note that the class index starts from 0, and you can find the class name from the file [data/dictionary_and_semantic_hierarchy.txt](data/dictionary_and_semantic_hierarchy.txt).
 
 ### [Image Source](#image-source)
 [[back to top](#)]
@@ -96,6 +74,63 @@ Finally, the number of remained URLs is 17,659,752, and the number of categories
 <!---
 Consequently,  8,385,050 training URLs and 159,424 validation URLs are remained, covering 2,039 categories.
 --->
+
+### [Download Images](#download-images)
+[[back to top](#)]
+
+Due to the copyright, we cannot provide the original images directly. However, one can obtain all images of our database using the following files:
+* train_image_id_from_imagenet.txt ([Link1](https://drive.google.com/file/d/1-7x4wPa764MJkjhhNj0PWPhgwMJOXziA/view?usp=sharing), [Link2](https://pan.baidu.com/s/1oUfIMCHj1wyz0ywuSn1iEQ))
+* val_image_id_from_imagenet.txt ([Link1](https://drive.google.com/file/d/1-1x1vJFZGesz-5R2W8DLWHaVEbIPjuJs/view?usp=sharing), [Link2](https://pan.baidu.com/s/10prwZcHstYA8ppyXxbEbXA))
+* train_urls_from_openimages.txt ([Link1](https://drive.google.com/file/d/1__HFVimF5yUwlyEjaUoSmBBfRQKJTYKW/view?usp=sharing), [Link2]( https://pan.baidu.com/s/1jjkaLu5JiHV6D0qyWXSxMA ))
+* val_urls_from_openimages.txt ([Link1](https://drive.google.com/file/d/1JkTcEEkB1zYI6NtAM-vXpsv7uDZ3glEz/view?usp=sharing), [Link2](https://pan.baidu.com/s/1F8mk58IGj9BP0-HSF-M9aw))
+
+<!--- ##### Download images from ImageNet --->
+
+#### [Download Images from ImageNet](#download-images-from-imagenet)
+We find that massive urls provided by ImageNet have expired (please check the file `List of all image URLs of Fall 2011 Release` at http://image-net.org/download-imageurls). Thus, here we provide the original image IDs of ImageNet used in our database. One can obtain the training/validation images of our database through the following steps:
+* Download the whole database of [ImageNet](http://image-net.org/download-images)
+* Extract the training/validation images using the image IDs in `train_image_id_from_imagenet.txt` and `val_image_id_from_imagenet.txt`
+
+The format of `train_image_id_from_imagenet.txt` is as follows:
+```
+...
+n04310904/n04310904_8388.JPEG   2367:1  2172:1  1831:1  1054:1  1041:1  865:1   2:1
+n11753700/n11753700_1897.JPEG   5725:1  5619:1  5191:1  5181:1  5173:1  5170:1  1042:1  865:1   2:1
+...
+```
+As shown above, one image corresponds to one row. The first term is the original image ID of ImageNet. The followed terms separated by space are the annotations. For example, "2367:1" indicates class 2367 and its confidence 1. Note that the class index starts from 0, and you can find the class name from the file [data/dictionary_and_semantic_hierarchy.txt](data/dictionary_and_semantic_hierarchy.txt).
+
+**NOTE**: We find that there are some repeated URLs in `List of all image URLs of Fall 2011 Release` of ImageNet, i.e., the image corresponding to one URL may be stored in multiple sub-folders with different image IDs. We manually check a few repeated images, and find the reason is that one image annotated with a child class may also be annotated with its parent class, then it is saved to two sub-folders with different image IDs. To the best of our knowledge, this point has never been claimed in ImageNet or any other place. If one want to use ImageNet, this point should be noticed. 
+Due to that, there are also a few repeated images in our database, but our training is not significantly influenced. In future, we will update the database by removing the repeated images. 
+
+
+#### [Download Images from Open Images](#download-images-from-open-images)
+
+<!---
+* train_urls.txt ([link1](https://drive.google.com/open?id=1ExY0GpRWxGzDHAI-p44m-B0AB76NeLy7), [link2](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg))
+* val_urls.txt ([link1](https://drive.google.com/open?id=13SSar872e73UcshIW7IGbmvUGcFjHyxg), [link2](https://pan.baidu.com/s/1BfipStD2PY7MAMRoZa9ecg))
+--->
+
+The images from Open Images can be downloaded using URLs. 
+The format of `train_urls_from_openimages.txt` is as follows:
+```
+...
+https://c4.staticflickr.com/8/7239/6997334729_e5fb3938b1_o.jpg  3:1  5193:0.9  5851:0.9 9413:1 9416:1
+https://c2.staticflickr.com/4/3035/3033882900_a9a4263c55_o.jpg  1053:0.8  1193:0.8  1379:0.8
+...
+```
+As shown above, one image corresponds to one row. The first term is the image URL. The followed terms separated by space are the annotations. For example, "5193:0.9" indicates class 5193 and its confidence 0.9. 
+
+##### Download Images using URLs
+We also provide the code to download images using URLs. 
+As `train_urls_from_openimages.txt` is very large, here we provide a tiny file [train_urls_tiny.txt](data/train_urls_tiny.txt) to demonstrate the downloading procedure.
+```
+cd data
+./download_urls_multithreading.sh
+```
+A sub-folder `data/images` will be generated to save the downloaded jpeg images, as well as a file `train_im_list_tiny.txt` to save the image list and the corresponding annotations. 
+
+
 
 
 ### [Semantic Hierarchy](#semantic-hierarchy)
@@ -144,23 +179,27 @@ The number of images per class and the histogram of the number of annotations in
 # [Train](#train)
 [[back to top](#)]
 
+
+<!---
 ### [Download Images using URLs](#download-images-using-urls)
 [[back to top](#)]
+--->
 
-
+<!---
 The full `train_urls.txt` is very large. 
 Here we provide a tiny file [train_urls_tiny.txt](data/train_urls_tiny.txt) to demonstrate the downloading procedure.
-
 ```
 cd data
 ./download_urls_multithreading.sh
 ```
 A sub-folder `data/images` will be generated to save the downloaded jpeg images, as well as a file `train_im_list_tiny.txt` to save the image list and the corresponding annotations. 
+--->
 
 <!---
 **Note**：Some URLs in [train_url.txt](https://pan.baidu.com/s/1cx6n6CYNqegKVq1O2YVCJg) have expired or may expire in future. If that, please provide us the missing URLs, we could provide the corresponding tfrecords.
 --->
 
+<!---
 #### [How to handle invalid URLs during downloading?](#How-to-handle-invalid-URLs-during-downloading)
 ##### For URLs from ImageNet
 The first 10,706,941 rows of `train_urls.txt` and the first 50,000 rows of `val_urls.txt` are URLs from ImageNet. 
@@ -168,7 +207,8 @@ A large proportion of these URLs have expired. However, the ImageNet website cou
 `train_urls_and_index_from_imagenet.txt` and `val_urls_and_index_from_imagenet.txt`. 
 * train_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1iK5j1zJ7SkitQ3ZIblYbUalAr5nFlngj), [link2](https://pan.baidu.com/s/145sGwH8Tv3RVwXZ95DuN4w)) 
 * val_urls_and_index_from_imagenet.txt ([link1](https://drive.google.com/open?id=1ojVU0TIA3n9ytOW8p94IWbGD8QfXAfNj), [link2](https://pan.baidu.com/s/1p5sQrMUbfxiG94OjHj9-mQ))
-
+--->
+<!---
 The format is as follows
 ```
 ...
@@ -180,10 +220,13 @@ In each row, the first term is the image ID in ImageNet, while other terms are t
 Then, two steps should be done to obtain the images used in ML-Images: 
 * Download the original images of the whole database of ImageNet from (http://image-net.org/download), and the corresponding URL file is `List of all image URLs of Fall 2011 Release` (see http://image-net.org/download-imageurls)
 * Pick out the images used in ML-Images, accoording to `train_urls_and_index_from_imagenet.txt` and `val_urls_and_index_from_imagenet.txt`.
+--->
 
+<!---
 ##### For URLs from Open Images
 The last 6,902,811 rows of `train_urls.txt` and the last 38,739  rows of `val_urls.txt` are URLs from Open Images. 
 Most of these URLs are valid, and you can directly download the images using the provided `download_urls_multithreading.sh`. 
+--->
 
 
 ### [Prepare the TFRecord File](#prepare-tfrecord)
