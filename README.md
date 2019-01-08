@@ -9,6 +9,7 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 
 * [2018/12/19] We simplify the procedure of downloading images. Please see [Download Images](#download-images).
 <!--- * [2018/12/22] We release one ArXiv manuscript at XXX, to demonstrate the details of our database, the loss function and training algorithm, as well as results.  --->
+* [2019/01/08] Our manuscript of this open-source project has been released on [ArXiv](https://arxiv.org/abs/1901.01703). It presents more details of the database, the loss function, the training algorithm, and more experimental results. 
 
 
 # Contents
@@ -317,5 +318,14 @@ If there is any concern about the copyright of any image used in this project, p
 # [Citation](#citation)
 [[back to top](#)]
 
-The arxiv paper describling the details of this project will be available soon!
+If any content of this project is utilized in your work (such as data, checkpoint, code, or the proposed loss or training algorithm), please cite the following manuscript.
+```
+@article{tencent-ml-images-2019,
+  title={Tencent ML-Images: A Large-Scale Multi-Label Image Database for Visual Representation Learning},
+  author={Wu, Baoyuan and Chen, Weidong and Fan, Yanbo and Zhang, Yong and Hou, Jinlong and Huang, Junzhou and Liu, Wei and Zhang, Tong},
+  journal={arXiv preprint arXiv:1901.01703},
+  year={2019}
+}
+```
+
 
