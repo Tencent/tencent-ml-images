@@ -2,8 +2,6 @@ Tencent is pleased to support the open source community by making Tencent ML-Ima
 
 Copyright (C) 2018 THL A29 Limited, a Tencent company.  All rights reserved.
 
-If you have downloaded a copy of the Tencent ML-Images binary from Tencent, please note that the Tencent ML-Images binary is licensed under the BSD 3-Clause License.
-
 If you have downloaded a copy of the Tencent ML-Images source code from Tencent, please note that Tencent ML-Images source code is licensed under the BSD 3-Clause License, except for the third-party components or materials listed below which are subject to different license terms.  Your integration of Tencent ML-Images into your own projects may require compliance with the BSD 3-Clause License, as well as the other licenses applicable to the third-party components or materials included within Tencent ML-Images.
 In addition, please note that the annotations of Tencent ML-Images are licensed under the Creative Commons Attribution 4.0 International Public License (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/.
 The copies of the BSD 3-Clause License and the Creative Commons Attribution 4.0 International Public License are included in this file.
