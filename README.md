@@ -174,7 +174,7 @@ Note: *Trainable class* indicates the class that has over 100 train images.
  
 The number of images per class and the histogram of the number of annotations in training set are shown in the following figures.       
 
-<img  src="git_images/fig_num_images_per_class_wanfenlei_1012.eps.eps" alt="GitHub" title="num images per class" width="430" height="240" />        <img  src="git_images/hist_num_annotations.png" alt="GitHub" title="histogram of num annotations" width="400" height="240" />
+<img  src="git_images/num_images_per_class.png" alt="GitHub" title="num images per class" width="430" height="240" />        <img  src="git_images/hist_num_annotations.png" alt="GitHub" title="histogram of num annotations" width="400" height="240" />
 
 
 # [Train](#train)
