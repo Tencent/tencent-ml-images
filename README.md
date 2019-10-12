@@ -166,7 +166,7 @@ The main statistics of ML-Images are summarized in ML-Images.
                                                       
 | # Train images  | # Validation images  | # Classes | # Trainable Classes | # Avg tags per image |  # Avg images per class |
 | :-------------: |:--------------------:| :--------:| :-----------------: |:-------------------:|  :---------------------:|
-| 17,609,752       | 88,739          | 11,166    | 10,505              |  8    |  1447.2 |
+| 17,609,752       | 88,739          | 11,166    | 10,505              |  8.72    |  13,843 |
 
 Note: *Trainable class* indicates the class that has over 100 train images.
 
