@@ -322,7 +322,7 @@ If any content of this project is utilized in your work (such as data, checkpoin
 ```
 @article{tencent-ml-images-2019,
   title={Tencent ML-Images: A Large-Scale Multi-Label Image Database for Visual Representation Learning},
-  author={Wu, Baoyuan and Chen, Weidong and Fan, Yanbo and Zhang, Yong and Hou, Jinlong and Huang, Junzhou and Liu, Wei and Zhang, Tong},
+  author={Wu, Baoyuan and Chen, Weidong and Fan, Yanbo and Zhang, Yong and Hou, Jinlong and Huang, Junzhou and Zhang, Tong},
   journal={arXiv preprint arXiv:1901.01703},
   year={2019}
 }
