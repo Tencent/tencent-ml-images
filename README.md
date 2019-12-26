@@ -7,9 +7,9 @@ This repository introduces the open-source project dubbed **Tencent ML-Images**,
 
 ## Updates
 
+* [2019/12/26] Our manuscript of this open-source project has been accepted to IEEE Access ([Journal](https://ieeexplore.ieee.org/document/8918053/authors#authors), [ArXiv](https://arxiv.org/abs/1901.01703)). It presents more details of the database, the loss function, the training algorithm, and more experimental results. 
 * [2018/12/19] We simplify the procedure of downloading images. Please see [Download Images](#download-images).
 <!--- * [2018/12/22] We release one ArXiv manuscript at XXX, to demonstrate the details of our database, the loss function and training algorithm, as well as results.  --->
-* [2019/01/08] Our manuscript of this open-source project has been released on [ArXiv](https://arxiv.org/abs/1901.01703). It presents more details of the database, the loss function, the training algorithm, and more experimental results. 
 
 
 # Contents
@@ -322,8 +322,9 @@ If any content of this project is utilized in your work (such as data, checkpoin
 ```
 @article{tencent-ml-images-2019,
   title={Tencent ML-Images: A Large-Scale Multi-Label Image Database for Visual Representation Learning},
-  author={Wu, Baoyuan and Chen, Weidong and Fan, Yanbo and Zhang, Yong and Hou, Jinlong and Huang, Junzhou and Zhang, Tong},
-  journal={arXiv preprint arXiv:1901.01703},
+  author={Wu, Baoyuan and Chen, Weidong and Fan, Yanbo and Zhang, Yong and Hou, Jinlong and Liu, Jie and Zhang, Tong},
+  journal={IEEE Access},
+  volume={7},
   year={2019}
 }
 ```
