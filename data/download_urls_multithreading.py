@@ -21,11 +21,8 @@ socket.setdefaulttimeout(10.0)
 from subprocess import call
 
 
-def downloadImg(start, end, url_list, save_dir, resume=False):
-    global record, count, count_invalid, is_exit, resume_records
-
-    if resume and resume_records:
-        url_list = 'resume.txt'
+def downloadImg(start, end, url_list, save_dir):
+    global record, count, count_invalid, is_exit
 
     with open(url_list, 'r') as url_f:
         for line in url_f.readlines()[start:end]:
@@ -70,6 +67,12 @@ if __name__ == "__main__":
     count_invalid = 0  # the num of invalid urls
     record = 0
 
+    if resume:
+        print('Resume the downloading process.')
+        command = """comm -23 <(sort {}) <(sort record.txt) > resume.txt""".format(url_list)
+        os.system('/bin/bash -c "{}"'.format(command))
+        url_list = 'resume.txt'
+
     with open(url_list, 'r') as f:
         count = len(f.readlines())
 
@@ -78,11 +81,6 @@ if __name__ == "__main__":
         with open('record.txt', 'r') as f:
             resume_records = len(f.readlines())
             print('{} files were downloaded'.format(resume_records))
-
-    if resume:
-        print('Resume the downloading process.')
-        command = """comm -23 <(sort {}) <(sort record.txt) > resume.txt""".format(url_list)
-        os.system('/bin/bash -c "{}"'.format(command))
 
     part = int(count / num_threads)
 
